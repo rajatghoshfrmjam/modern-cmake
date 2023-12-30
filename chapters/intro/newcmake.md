@@ -1,4 +1,4 @@
-# What's new in in CMake
+# What's new in CMake
 
 This is an abbreviated version of the CMake changelog with just the highlights for authors. Names for each release are arbitrarily picked by the author.
 
@@ -161,7 +161,7 @@ support. Presets continue to be improved.
 - `CMAKE_<LANG>_LINKER_LAUNCHER` added for make and ninja
 - HIP added as a language
 - C17 and C23 support added
-- `--instal-prefix <dir>` and `--toolchain <file>` added when running CMake
+- `--install-prefix <dir>` and `--toolchain <file>` added when running CMake
 - Messages printed are colored by message type!
 - Support for MSYS, including `FindMsys`
 - The `file(` command got several updates, including `EXPAND_TILDE`
@@ -229,7 +229,7 @@ features and papercut fixes are sprinkled throughout, a small selection is below
 - `cmake_language` with `CALL` and `EVAL`
 - `export` requires `APPEND` if used multiple times (in CMake language level 3.18+)
 - You can archive directly from `file()`
-- `file(CONFIGURE` is a nicer from of `configure_file` if you already have a string to produce
+- `file(CONFIGURE` is a nicer form of `configure_file` if you already have a string to produce
 - Other `find_*` commands gain `find_package`'s `REQUIRED` flag
 - `NATURAL` sorting in `list(SORT` added
 - More options for handling properties with DIRECTORY scope
