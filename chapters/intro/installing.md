@@ -4,7 +4,7 @@
 Your CMake version should be newer than your compiler. It should be newer than the libraries you are using (especially Boost). New versions work better for everyone.
 {% endhint %}
 
-If you have a built in copy of CMake, it isn't special or customized for your system. You can easily install a new one instead, either on the system level or the user level. Feel free to instruct your users here if they complain about a CMake requirement being set too high. Especially if they want 3.1+ support. Maybe even if they want 3.27+ support...
+If you have a built in copy of CMake, it isn't special or customized for your system. You can easily install a new one instead, either on the system level or the user level. Feel free to instruct your users here if they complain about a CMake requirement being set too high. Especially if they want 3.1+ support. Maybe even if they want 3.28+ support...
 
 #### Quick list (more info on each method below)
 
@@ -35,14 +35,14 @@ You can [download CMake from KitWare][download]. This is how you will probably g
 On Linux, there are several options. Kitware provides a [Debian/Ubuntu apt repository][apt], as well as [snap packages][snap]. There are universal Linux binaries provided, but you'll need to pick an install location. If you already use `~/.local` for user-space packages, the following single line command[^1] will get CMake for you [^2]:
 
 {% term %}
-~ $ wget -qO- "https://cmake.org/files/v3.27/cmake-3.27.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C ~/.local
+~ $ wget -qO- "https://cmake.org/files/v3.28/cmake-3.28.1-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C ~/.local
 {% endterm %}
 
 The names changed in 3.20; older releases had names like `cmake-3.19.7-Linux-x86_64.tar.gz`. If you just want a local folder with CMake only:
 
 {% term %}
-~ $ mkdir -p cmake-3.27 && wget -qO- "https://cmake.org/files/v3.27/cmake-3.27.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C cmake-3.27
-~ $ export PATH=`pwd`/cmake-3.27/bin:$PATH
+~ $ mkdir -p cmake-3.28 && wget -qO- "https://cmake.org/files/v3.28/cmake-3.28.1-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C cmake-3.28
+~ $ export PATH=`pwd`/cmake-3.28/bin:$PATH
 {% endterm %}
 
 You'll obviously want to append to the PATH every time you start a new terminal, or add it to your `.bashrc` or to an [LMod][] system.
@@ -50,7 +50,7 @@ You'll obviously want to append to the PATH every time you start a new terminal,
 And, if you want a system install, install to `/usr/local`; this is an excellent choice in a Docker container, for example on GitLab CI. Do not try it on a non-containerized system.
 
 {% term %}
-docker $ wget -qO- "https://cmake.org/files/v3.27/cmake-3.27.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C /usr/local
+docker $ wget -qO- "https://cmake.org/files/v3.28/cmake-3.28.1-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C /usr/local
 {% endterm %}
 
 If you are on a system without wget, replace `wget -qO-` with `curl -s`.
@@ -132,8 +132,8 @@ Just `pip install cmake` on many systems. Add `--user` if you have to (modern pi
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------- | ------------------------------------------------------------ |
 | [TravisCI Xenial](https://docs.travis-ci.com/user/reference/xenial/#compilers-and-build-toolchain)                                   | 3.12.4        | Mid November 2018 this image became ready for widescale use. |
 | [TravisCI Bionic](https://docs.travis-ci.com/user/reference/bionic/#compilers-and-build-toolchain)                                   | 3.12.4        | Same as Xenial at the moment.                                |
-| [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) | 3.27.0        | kept up to date                                              |
-| [GitHub Actions 20.04](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md)                  | 3.27.0        | Same runners as Azure DevOps                                 |
+| [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) | 3.28.0        | kept up to date                                              |
+| [GitHub Actions 20.04](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md)                  | 3.28.0        | Same runners as Azure DevOps                                 |
 
 If you are using GitHub Actions, also see the [jwlawson/actions-setup-cmake](https://github.com/marketplace/actions/actions-setup-cmake) action, which can install your selection of CMake, even in a docker action run.
 

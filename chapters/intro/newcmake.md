@@ -4,8 +4,29 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
-* `CMAKE_CROSSCOMPILING_EMULATOR` environment variable added.
+* Linker selection option
+* CMake test launcher
+* If commands to check file permissions
+* You can now make tests depend on `all` with `CMAKE_SKIP_TEST_ALL_DEPENDENCY` set to `FALSE`!
+
+
+## [CMake 3.28][]: C++20 modules
+
+This release adds [C++ module](https://cmake.org/cmake/help/latest/manual/cmake-cxxmodules.7.html)
+support. This does not include C++23's `import std`, but is exciting step
+forward for this landmark C++20 feature. These will be scanned by default if
+using C++20+ and a new enough compiler and valid generator and if you have a
+CMake minimum or maximum that includes CMake 3.28.
+
+* Initially released [December 6, 2023](https://www.kitware.com/cmake-3-28-0-available-for-download/)
+* C++20 named modules supported by Ninja 1.11+ and MSVC 17.4+.
+* `HIP` supported for NVIDIA.
 * Apple's VisionOS added.
+* `CMAKE_CROSSCOMPILING_EMULATOR` environment variable added.
+* Get/set properties TEST supports other DIRECTORY's
+* Some support for job servers added
+* Support for passing variables to pkg-config
+* Generator expressions now support short-circuting
 
 
 ## [CMake 3.27][]: Debugger
@@ -497,5 +518,6 @@ There were a ton of additions to this version of CMake, primarily to fill out th
 [cmake 3.25]: https://cmake.org/cmake/help/latest/release/3.25.html
 [cmake 3.26]: https://cmake.org/cmake/help/latest/release/3.26.html
 [cmake 3.27]: https://cmake.org/cmake/help/latest/release/3.27.html
+[cmake 3.28]: https://cmake.org/cmake/help/latest/release/3.28.html
 [cmake master]: https://cmake.org/cmake/help/git-master/release/index.html
 [fastercmake]: https://blog.kitware.com/improving-cmakes-runtime-performance/

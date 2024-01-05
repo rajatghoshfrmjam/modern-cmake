@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11...3.27)
+cmake_minimum_required(VERSION 3.11...3.28)
 
 project(ModernCMakeExamples)
 set(MODERN_CMAKE_BUILD_TESTING ON)
