@@ -1,5 +1,5 @@
 test_code:
-  image: rootproject/root:latest
+  image: rootproject/root:6.26.14-ubuntu22.04
   stage: test
   before_script:
     - apt-get update && apt-get install -y make cmake libboost-dev git
