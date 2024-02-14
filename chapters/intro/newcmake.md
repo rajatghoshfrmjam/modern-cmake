@@ -4,11 +4,12 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
-* Linker selection option
-* CMake test launcher
-* If commands to check file permissions
-* You can now make tests depend on `all` with `CMAKE_SKIP_TEST_ALL_DEPENDENCY` set to `FALSE`!
-
+- Linker selection option (`CMAKE_LINKER_TYPE`/`LINKER_TYPE`)
+- `CMAKE_INSTALL_PREFIX` can now be initialized by a matching environment variable
+- If commands to check file permissions
+- Select launcher for tests (`CMAKE_TEST_LAUNCHER`/`TEST_LAUNCHER`)
+- You can now make tests depend on `all` with `CMAKE_SKIP_TEST_ALL_DEPENDENCY` set to `FALSE`!
+- Select Intel OneAPI Fortran compiler with Visual Studio
 
 ## [CMake 3.28][]: C++20 modules
 
@@ -18,21 +19,20 @@ forward for this landmark C++20 feature. These will be scanned by default if
 using C++20+ and a new enough compiler and valid generator and if you have a
 CMake minimum or maximum that includes CMake 3.28.
 
-* Initially released [December 6, 2023](https://www.kitware.com/cmake-3-28-0-available-for-download/)
-* C++20 named modules supported by Ninja 1.11+ and MSVC 17.4+.
-* `HIP` supported for NVIDIA.
-* Apple's VisionOS added.
-* `CMAKE_CROSSCOMPILING_EMULATOR` environment variable added.
-* Get/set properties TEST supports other DIRECTORY's
-* Some support for job servers added
-* Support for passing variables to pkg-config
-* Generator expressions now support short-circuting
-
+- Initially released [December 6, 2023](https://www.kitware.com/cmake-3-28-0-available-for-download/)
+- C++20 named modules supported by Ninja 1.11+ and MSVC 17.4+.
+- `HIP` supported for NVIDIA.
+- Apple's VisionOS added.
+- `CMAKE_CROSSCOMPILING_EMULATOR` environment variable added.
+- Get/set properties TEST supports other DIRECTORY's
+- Some support for job servers added
+- Support for passing variables to pkg-config
+- Generator expressions now support short-circuting
 
 ## [CMake 3.27][]: Debugger
 
 This release adds the new CMake debugger! This should improve support for
-debugging your CMake code in something like VSCode.  This release also
+debugging your CMake code in something like VSCode. This release also
 "removes" FindPythonLibs/FindPythonInterp/FindCUDA; if the min or max version
 is set to 3.27 or higher, the modules will be missing.
 
