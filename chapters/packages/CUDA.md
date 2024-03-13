@@ -64,11 +64,13 @@ You can also directly make a PTX file with the `CUDA_PTX_COMPILATION` property.
 
 ### Targeting architectures
 
-When you build CUDA code, you generally should be targeting an architecture. If you don't, you compile 'ptx', which provide the basic instructions but is compiled at runtime, making it potentially much slower to load.
+When you build CUDA code, you generally should be targeting an architecture. If you don't, you compile PTX for the lowest supported architecture, which provide the basic instructions but is compiled at runtime, making it potentially much slower to load.
 
 All cards have an architecture level, like "7.2". You have two choices; the first is the code level; this will report to the code being compiled a version, like "5.0", and it will take advantage of all the features up to 5.0 but not past (assuming well written code / standard libraries). Then there's a target architecture, which must be equal or greater to the code architecture. This needs to have the same major number as your target card, and be equal to or less than the target card. So 7.0 would be a common choice for our 7.2 card. Finally, you can also generate PTX; this will work on all future cards, but will compile just in time.
 
-In CMake 3.18, it became very easy to target architectures. If you have a version range that includes 3.18 or newer, you will be using `CMAKE_CUDA_ARCHITECTURES` variable and the `CUDA_ARCHITECTURES` property on targets. You can list values (without the `.`), like 50 for arch 5.0. If set to OFF, it will not pass architectures.
+In CMake 3.18, it became very easy to target architectures. If you have a version range that includes 3.18 or newer, you will be using `CMAKE_CUDA_ARCHITECTURES` variable and the `CUDA_ARCHITECTURES` property on targets. You can list values (without the `.`), like 50 for arch 5.0. This will generate for both the real ( SASS ) and virtual architecture ( PTX ). Passing values of '50-real' will only generate for SASS, while passing '50-virtual' will only generate for PTX. If set to OFF, it will not pass architectures.
+
+In CMake 3.24, the architectures values have been extended to support user friendly values of 'native', 'all', and 'all-major'.
 
 ### Working with targets
 
@@ -96,13 +98,30 @@ endfunction()
 
 ### Useful variables
 
-- `CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES`: Place for built-in Thrust, etc
-- `CMAKE_CUDA_COMPILER`: NVCC with location
-
 You can use
 [`FindCUDAToolkit`](https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html)
 to find a variety of useful targets and variables even without enabling the
 CUDA language.
+
+```cmake
+cmake_minimum_required(VERSION 3.17)
+project(example LANGUAGES CXX)
+
+find_package(CUDAToolkit REQUIRED)
+add_executable(uses_cublas source.cpp)
+target_link_libraries(uses_cublas PRIVATE CUDA::cublas)
+```
+
+Variables that using `find_package(CUDAToolkit)` provides:
+
+- `CUDAToolkit_BIN_DIR`: Directory that holds the `nvcc` executable
+- `CUDAToolkit_INCLUDE_DIRS`: Lists of directories containing headers for built-in Thrust, etc
+- `CUDAToolkit_LIBRARY_DIR`: Directory that holds the CUDA runtime library
+
+Variables that enabling the `CUDA` language provides:
+
+- `CMAKE_CUDA_COMPILER`: NVCC with location
+- `CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES`: Place for built-in Thrust, etc
 
 > ### Note that FindCUDA is deprecated, but for for versions of CMake < 3.18, the following functions required FindCUDA:
 >
