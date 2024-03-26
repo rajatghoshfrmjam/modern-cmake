@@ -6,7 +6,7 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 - A `$<QUOTE>` generator expression was added to produce `"`
 
-## [CMake 3.28][]: Build before testing
+## [CMake 3.29][]: Build before testing
 
 Finally you can make the `test` target depend on `ALL`, meaning `cmake --build
 build -t test` will rebuild as needed! You have to opt-into this, though, by
