@@ -4,12 +4,25 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
+- A `$<QUOTE>` generator expression was added to produce `"`
+
+## [CMake 3.28][]: Build before testing
+
+Finally you can make the `test` target depend on `ALL`, meaning `cmake --build
+build -t test` will rebuild as needed! You have to opt-into this, though, by
+setting `CMAKE_SKIP_TEST_ALL_DEPENDENCY` to false. Several improvements were
+made for scripting, linker selection, and support was improved for various
+compiler combinations on Windows.
+
+- Initially released [March 21, 2024](https://www.kitware.com/cmake-3-29-0-available-for-download/)
 - Linker selection option (`CMAKE_LINKER_TYPE`/`LINKER_TYPE`)
 - `CMAKE_INSTALL_PREFIX` can now be initialized by a matching environment variable
 - If commands to check file permissions
 - Select launcher for tests (`CMAKE_TEST_LAUNCHER`/`TEST_LAUNCHER`)
 - You can now make tests depend on `all` with `CMAKE_SKIP_TEST_ALL_DEPENDENCY` set to `FALSE`!
+- `cmake_language(EXIT)` for scripts with exit codes
 - Select Intel OneAPI Fortran compiler with Visual Studio
+- Compile CUDA on Windows with Clang
 
 ## [CMake 3.28][]: C++20 modules
 

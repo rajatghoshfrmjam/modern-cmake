@@ -1,7 +1,7 @@
 # CMake ROOT usefile example
 
 ## [main]
-cmake_minimum_required(VERSION 3.1...3.28)
+cmake_minimum_required(VERSION 3.1...3.29)
 
 project(RootUseFileExample LANGUAGES CXX)
 

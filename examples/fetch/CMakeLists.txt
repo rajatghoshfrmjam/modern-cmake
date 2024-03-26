@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14...3.28)
+cmake_minimum_required(VERSION 3.14...3.29)
 
 project(FetchExample LANGUAGES CXX)
 
