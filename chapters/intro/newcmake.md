@@ -532,5 +532,6 @@ There were a ton of additions to this version of CMake, primarily to fill out th
 [cmake 3.26]: https://cmake.org/cmake/help/latest/release/3.26.html
 [cmake 3.27]: https://cmake.org/cmake/help/latest/release/3.27.html
 [cmake 3.28]: https://cmake.org/cmake/help/latest/release/3.28.html
+[cmake 3.29]: https://cmake.org/cmake/help/latest/release/3.29.html
 [cmake master]: https://cmake.org/cmake/help/git-master/release/index.html
 [fastercmake]: https://blog.kitware.com/improving-cmakes-runtime-performance/
