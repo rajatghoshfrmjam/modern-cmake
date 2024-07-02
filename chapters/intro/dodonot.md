@@ -1,8 +1,8 @@
 # Do's and Don'ts
 
-## CMake Antipatterns
-
 The next two lists are heavily based on the excellent gist [Effective Modern CMake]. That list is much longer and more detailed, feel free to read it as well.
+
+## CMake Antipatterns
 
 - **Do not use global functions**: This includes `link_directories`, `include_libraries`, and similar.
 - **Don't add unneeded PUBLIC requirements**: You should avoid forcing something on users that is not required (`-Wall`). Make these PRIVATE instead.
