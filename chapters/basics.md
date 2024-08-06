@@ -128,7 +128,7 @@ Now we've specified a target, how do we add information about it? For example, m
 target_include_directories(one PUBLIC include)
 ```
 
-«command:`target_include_directories» adds an include directory to a target. `PUBLIC`doesn't mean much for an executable; for a library it lets CMake know that any targets that link to this target must also need that include directory. Other options are`PRIVATE`(only affect the current target, not dependencies), and`INTERFACE` (only needed for dependencies).
+«command:`target_include_directories`» adds an include directory to a target. `PUBLIC` doesn't mean much for an executable; for a library it lets CMake know that any targets that link to this target must also need that include directory. Other options are`PRIVATE`(only affect the current target, not dependencies), and `INTERFACE` (only needed for dependencies).
 
 We can then chain targets:
 
