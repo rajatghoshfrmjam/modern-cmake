@@ -5,7 +5,7 @@ test_code:
     - apt-get update && apt-get install -y make cmake libboost-dev git
     # We will install latest CMake, even though Ubuntu has a recent one
     - mkdir -p $HOME/.local
-    - curl -s "https://cmake.org/files/v3.29/cmake-3.29.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C $HOME/.local
+    - curl -s "https://cmake.org/files/v3.30/cmake-3.30.2-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C $HOME/.local
     - export PATH=$HOME/.local/bin:$PATH
   script:
     - cmake -S examples -B build

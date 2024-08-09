@@ -4,7 +4,27 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
+- LFortan now supported
+- `$comment` supported in preset files
+- `cmake -LR <regex>` to search the cache
+
+
+## [CMake 3.30][]: C++26
+
+This release adds C++26 support and a way to get the latest supported standard
+for a compiler.  This release makes a lot of small changes not listed below,
+like better TLS support, some generator expression updates, and some schema
+updates.
+
+- Initially released [July 2, 2024](https://www.kitware.com/cmake-3-30-0-available-for-download/)
 - A `$<QUOTE>` generator expression was added to produce `"`
+- C++26 compile features support fully implemented (partial since 3.25)
+- `CMAKE_<LANG>_STANDARD_LATEST` holds the latest standard the current compiler supports
+- Free-threaded Python 3.13+ support
+- Better support (new variables and targets) for Windows Python debug builds, and `DEBUG_POSTFIX` now added by `python_add_library`
+- FindBoost removed
+- Visual Studio 2008 support removed
+
 
 ## [CMake 3.29][]: Build before testing
 
@@ -533,5 +553,6 @@ There were a ton of additions to this version of CMake, primarily to fill out th
 [cmake 3.27]: https://cmake.org/cmake/help/latest/release/3.27.html
 [cmake 3.28]: https://cmake.org/cmake/help/latest/release/3.28.html
 [cmake 3.29]: https://cmake.org/cmake/help/latest/release/3.29.html
+[cmake 3.30]: https://cmake.org/cmake/help/latest/release/3.30.html
 [cmake master]: https://cmake.org/cmake/help/git-master/release/index.html
 [fastercmake]: https://blog.kitware.com/improving-cmakes-runtime-performance/
