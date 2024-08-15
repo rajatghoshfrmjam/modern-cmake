@@ -1,0 +1,60 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README
+parts:
+  - caption: Getting Started
+    chapters:
+      - file: chapters/intro/installing
+      - file: chapters/intro/running
+      - file: chapters/intro/dodonot
+      - file: chapters/intro/newcmake
+  - caption: The Basics
+    chapters:
+      - file: chapters/basics
+      - file: chapters/basics/variables
+      - file: chapters/basics/functions
+      - file: chapters/basics/comms
+      - file: chapters/basics/structure
+      - file: chapters/basics/programs
+      - file: chapters/basics/example
+  - caption: Extra features
+    chapters:
+      - file: chapters/features
+      - file: chapters/features/cpp11
+      - file: chapters/features/small
+      - file: chapters/features/utilities
+      - file: chapters/features/modules
+      - file: chapters/features/ides
+      - file: chapters/features/debug
+  - caption: Using Other Projects
+    chapters:
+      - file: chapters/projects
+      - file: chapters/projects/submodule
+      - file: chapters/projects/download
+      - file: chapters/projects/fetch
+  - caption: Testing
+    chapters:
+      - file: chapters/testing
+      - file: chapters/testing/googletest
+      - file: chapters/testing/catch
+  - caption: Exporting and Installing
+    chapters:
+      - file: chapters/install
+      - file: chapters/install/installing
+      - file: chapters/install/exporting
+      - file: chapters/install/packaging
+  - caption: Libraries
+    chapters:
+      - file: chapters/packages
+      - file: chapters/packages/CUDA
+      - file: chapters/packages/OpenMP
+      - file: chapters/packages/Boost
+      - file: chapters/packages/MPI
+      - file: chapters/packages/ROOT
+        sections:
+          - file: examples/root-usefile/README
+          - file: examples/root-simple/README
+          - file: examples/root-dict/README
+      - file: chapters/packages/Minuit2

@@ -1,0 +1,42 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Modern CMake
+author: Henry Schreiner
+copyright: "2024"
+logo: logo.png
+only_build_toc_files: true
+
+exclude_patterns:
+  - _build
+  - build
+  - Thumbs.db
+  - .DS_Store
+  - "**.ipynb_checkpoints"
+  - .pixi
+  - "**/_deps"
+
+latex:
+  latex_documents:
+    targetname: modern-cmake.tex
+
+repository:
+  url: https://gitlab.com/CLIUtils/modern-cmake
+  branch: master
+
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+parse:
+  myst_substitutions:
+    cmake: "[{0}](https://cmake.org/cmake/help/latest/manual/cmake-{0}.7.html)"
+    command: "[`{0}`](https://cmake.org/cmake/help/latest/command/{0}.html)"
+    envvar: "[`{0}`](https://cmake.org/cmake/help/latest/envvar/{0}.html)"
+    module: "[{0}](https://cmake.org/cmake/help/latest/module/{0}.html)"
+    policy: "[{0}](https://cmake.org/cmake/help/latest/policy/{0}.html)"
+    variable: "[`{0}`](https://cmake.org/cmake/help/latest/variable/{0}.html)"
+    prop: "[`{1}`](https://cmake.org/cmake/help/latest/prop-{0}/{1}.html)"
+  myst_enable_extensions:
+    - colon_fence
+    - substitution

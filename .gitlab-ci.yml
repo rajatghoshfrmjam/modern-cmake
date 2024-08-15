@@ -1,35 +1,27 @@
-test_code:
-  image: rootproject/root:6.26.14-ubuntu22.04
-  stage: test
+default:
+  image: ghcr.io/prefix-dev/pixi:latest
   before_script:
-    - apt-get update && apt-get install -y make cmake libboost-dev git
-    # We will install latest CMake, even though Ubuntu has a recent one
-    - mkdir -p $HOME/.local
-    - curl -s "https://cmake.org/files/v3.30/cmake-3.30.2-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C $HOME/.local
-    - export PATH=$HOME/.local/bin:$PATH
+    - apt-get update && apt-get install -y texlive texlive-xetex texlive-fonts-extra latexmk
+
+variables:
+  DEBIAN_FRONTEND: noninteractive
+
+test:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   script:
-    - cmake -S examples -B build
-    - cmake --build build -v
-    - cmake --build build -t test
+    - pixi run test
+    - pixi run build
+    - pixi run pdf
 
 pages:
-  image: node:14-buster
-  stage: deploy
-  only:
-    - master
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules/
-  before_script:
-    - apt-get update && apt-get install -y calibre calibre-bin libxss1 libasound2
-    - npm install --unsafe-perm
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
-    - npx gitbook build . public
-    - npx gitbook pdf . public/modern-cmake.pdf
+    - pixi run build
+    - pixi run pdf
+    - cp _build/latex/modern-cmake.pdf _build/html/
   artifacts:
     paths:
-      - public
+      - _build/html
     expire_in: 1 week

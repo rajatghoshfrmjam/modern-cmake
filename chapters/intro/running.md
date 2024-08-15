@@ -8,24 +8,23 @@ Unless otherwise noted, you should always make a build directory and build from 
 
 Here's the Classic CMake Build Procedure (TM):
 
-{% term %}
+```bash
 ~/package $ mkdir build
 ~/package $ cd build
 ~/package/build $ cmake ..
 ~/package/build $ make
-{% endterm %}
+```
 
 You can replace the make line with `cmake --build .` if you'd like, and it will call `make` or whatever build tool you are using. If you are using a newer version of CMake (which you usually should be, except for checking compatibility with older CMake), you can instead do this:
 
-{% term %}
+```bash
 ~/package $ cmake -S . -B build
 ~/package $ cmake --build build
-{% endterm %}
+```
 
 Any _one_ of these commands will install:
 
-{% term %}
-
+```bash
 # From the build directory (pick one)
 
 ~/package/build $ make install
@@ -37,7 +36,7 @@ Any _one_ of these commands will install:
 ~/package $ make -C build install
 ~/package $ cmake --build build --target install
 ~/package $ cmake --install build # CMake 3.15+ only
-{% endterm %}
+```
 
 So which set of methods should you use? As long as you _do not forget_ to type the build directory as the argument, staying out of the build directory is shorter, and making source changes is easier from the source directory. You should try to get used to using `--build`, as that will free you from using only `make` to build. Note that working from the build directory is historically much more common, and some tools and commands (including CTest <3.20) still require running from the build directory.
 
@@ -49,9 +48,9 @@ If you use `cmake --build` instead of directly calling the underlying build syst
 
 Selecting a compiler must be done on the first run in an empty directory. It's not CMake syntax per se, but you might not be familiar with it. To pick Clang:
 
-{% term %}
+```bash
 ~/package/build $ CC=clang CXX=clang++ cmake ..
-{% endterm %}
+```
 
 That sets the environment variables in bash for CC and CXX, and CMake will respect those variables. This sets it just for that one line, but that's the only time you'll need those; afterwards CMake continues to use the paths it deduces from those values.
 
@@ -59,9 +58,9 @@ That sets the environment variables in bash for CC and CXX, and CMake will respe
 
 You can build with a variety of tools; `make` is usually the default. To see all the tools CMake knows about on your system, run
 
-{% term %}
+```bash
 ~/package/build $ cmake --help
-{% endterm %}
+```
 
 And you can pick a tool with `-G"My Tool"` (quotes only needed if spaces are in the tool name). You should pick a tool on your first CMake call in a directory, just like the compiler. Feel free to have several build directories, like `build/` and `buildXcode`.
 You can set the environment variable `CMAKE_GENERATOR` to control the default generator (CMake 3.15+).
@@ -75,10 +74,10 @@ You set options in CMake with `-D`. You can see a list of options with `-L`, or 
 
 Although not all build tools support it, you can get verbose builds (pick one):
 
-{% term %}
+```bash
 ~/package $ cmake --build build --verbose # CMake 3.14+ only
 ~/package/build $ VERBOSE=1 make
-{% endterm %}
+```
 
 You can actually write `make VERBOSE=1`, and make will also do the right thing, though that's a feature of `make` and not the command line in general.
 

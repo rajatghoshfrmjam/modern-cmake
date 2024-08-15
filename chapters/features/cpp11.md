@@ -45,8 +45,10 @@ Which is better, but still doesn't have the sort of explicit control that compil
 
 You can find more information about the final two methods on [Craig Scott's useful blog post][crascit].
 
-{% hint style='danger' %}
+:::{danger}
+
 Don't set manual flags yourself. You'll then become responsible for mainting correct flags for every release of every compiler, error messages for unsupported compilers won't be useful, and some IDEs might not pick up the manual flags.
-{% endhint %}
+
+:::
 
 [crascit]: https://crascit.com/2015/03/28/enabling-cxx11-in-cmake/

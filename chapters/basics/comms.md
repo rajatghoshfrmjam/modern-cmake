@@ -6,7 +6,7 @@ CMake allows you to access CMake variables from your code using `configure_file`
 
 This functionality is used quite frequently; for example, on `Version.h.in`:
 
-#### Version.h.in
+### Version.h.in
 
 ```cpp
 #pragma once
@@ -18,7 +18,7 @@ This functionality is used quite frequently; for example, on `Version.h.in`:
 #define MY_VERSION "@PROJECT_VERSION@"
 ```
 
-#### CMake lines:
+### CMake lines:
 
 ```cmake
 configure_file (

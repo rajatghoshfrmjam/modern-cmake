@@ -11,20 +11,26 @@ I'm talking about Modern CMake. CMake 3.5+, maybe even CMake 3.30+!
 It's clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
 And CMake 3.11+ is supposed to be significantly faster, as well!
 
-{% hint %}
+:::{note}
+
 Are you interested in using CMake to build Python packages? I'm working on scikit-build-core, [proposal described here][skprop]! Let me know if you have a use case!
 
 [skprop]: https://iscinumpy.gitlab.io/post/scikit-build-proposal/
 
-{% endhint %}
+:::
 
-{% hint style='working' %}
+:::{attention}
+
 This book is meant to be a living document. You can raise an issue or put in a merge request on [GitLab](https://gitlab.com/CLIUtils/modern-cmake).
 You can also [download a copy as a PDF](https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf). Be sure to check the [HSF CMake Training][], as well!
 
-[hsf cmake training]: https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html
+:::
 
-{% endhint %}
+:::{warning}
+
+This book has just been moved from GitBook to JupyterBook. There might be some rough edges after the transition - feel free to report or fix issues!
+
+:::
 
 In short, here are the most likely questions in your mind if you are considering Modern CMake:
 

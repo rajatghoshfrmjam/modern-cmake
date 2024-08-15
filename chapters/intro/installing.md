@@ -1,12 +1,14 @@
 # Installing CMake
 
-{% hint style='tip' %}
+:::{tip}
+
 Your CMake version should be newer than your compiler. It should be newer than the libraries you are using (especially Boost). New versions work better for everyone.
-{% endhint %}
+
+:::
 
 If you have a built in copy of CMake, it isn't special or customized for your system. You can easily install a new one instead, either on the system level or the user level. Feel free to instruct your users here if they complain about a CMake requirement being set too high. Especially if they want 3.1+ support. Maybe even if they want 3.30+ support...
 
-#### Quick list (more info on each method below)
+## Quick list (more info on each method below)
 
 Ordered by author preference:
 
@@ -34,24 +36,24 @@ You can [download CMake from KitWare][download]. This is how you will probably g
 
 On Linux, there are several options. Kitware provides a [Debian/Ubuntu apt repository][apt], as well as [snap packages][snap]. There are universal Linux binaries provided, but you'll need to pick an install location. If you already use `~/.local` for user-space packages, the following single line command[^1] will get CMake for you [^2]:
 
-{% term %}
+```bash
 ~ $ wget -qO- "https://cmake.org/files/v3.30/cmake-3.30.2-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C ~/.local
-{% endterm %}
+```
 
 The names changed in 3.20; older releases had names like `cmake-3.19.7-Linux-x86_64.tar.gz`. If you just want a local folder with CMake only:
 
-{% term %}
+```bash
 ~ $ mkdir -p cmake-3.30 && wget -qO- "https://cmake.org/files/v3.30/cmake-3.30.2-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C cmake-3.30
 ~ $ export PATH=`pwd`/cmake-3.30/bin:$PATH
-{% endterm %}
+```
 
 You'll obviously want to append to the PATH every time you start a new terminal, or add it to your `.bashrc` or to an [LMod][] system.
 
 And, if you want a system install, install to `/usr/local`; this is an excellent choice in a Docker container, for example on GitLab CI. Do not try it on a non-containerized system.
 
-{% term %}
+```bash
 docker $ wget -qO- "https://cmake.org/files/v3.30/cmake-3.30.2-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C /usr/local
-{% endterm %}
+```
 
 If you are on a system without wget, replace `wget -qO-` with `curl -s`.
 
@@ -63,7 +65,8 @@ Here are some common build environments and the CMake version you'll find on the
 
 ### Windows
 
-[![Winget package](https://repology.org/badge/version-for-repo/winget/cmake.svg)][winget]
+[The winget package][winget] is a good way to get CMake. Other options:
+
 [![Chocolatey package](https://repology.org/badge/version-for-repo/chocolatey/cmake.svg)][chocolatey]
 [![MSYS2 mingw package](https://repology.org/badge/version-for-repo/msys2_mingw/cmake.svg)][msys2]
 [![MSYS2 msys2 package](https://repology.org/badge/version-for-repo/msys2_msys2/cmake.svg)][msys2]
@@ -149,8 +152,8 @@ Also see [pkgs.org/download/cmake](https://pkgs.org/download/cmake).
 
 [This][pypi] is also provided as an official package, maintained by the authors of CMake at KitWare and several PyPA members, including myself. It's now supported on special architectures, like PowerPC on Linux and Apple Silicon on macOS, and on MUSL systems like Alpine too. If you have pip (Python's package installer), you can do:
 
-```term
-gitbook $ pip install cmake
+```bash
+pip install cmake
 ```
 
 And as long as a binary exists for your system, you'll be up-and-running almost immediately. If a binary doesn't exist, it will try to use KitWare's `scikit-build` package to build, and will require an older copy of CMake to build. So only use this system if binaries exist, which is most of the time.
@@ -159,10 +162,13 @@ This has the benefit of respecting your current virtual environment, as well. It
 
 This also, of course, works with pipx. So you can even use `pipx run cmake` to run CMake in a disposable virtual environment, without any setup - and this works out-of-the-box on GitHub Actions, since `pipx` is a supported package manager there!
 
-{% hint style='info' %}
+:::{tip}
+
 Personally, on Linux, I put versions of CMake in folders, like `/opt/cmake312` or `~/opt/cmake312`, and then add them to [LMod][]. See [`envmodule_setup`][envmodule_setup] for help setting up an LMod system on macOS or Linux. It takes a bit to learn, but is a great way to manage package and compiler versions.
+
 [envmodule_setup]: https://github.com/CLIUtils/envmodule_setup
-{% endhint %}
+
+:::
 
 [^1]: I assume this is obvious, but you are downloading and running code, which exposes you to a man in the middle attack. If you are in a critical environment, you should download the file and check the checksum. (And, no, simply doing this in two steps does not make you any safer, only a checksum is safer).
 [^2]: If you don't have a `.local` in your home directory, it's easy to start. Just make the folder, then add `export PATH="$HOME/.local/bin:$PATH"` to your `.bashrc` or `.bash_profile` or `.profile` file in your home directory. Now you can install any packages you build to `-DCMAKE_INSTALL_PREFIX=~/.local` instead of `/usr/local`!

@@ -37,7 +37,7 @@ You can pretty easily find `Find*.cmake`'s for this and other libraries that you
 
 ## Interprocedural optimization
 
-«prop:tgt:INTERPROCEDURAL*OPTIMIZATION», best known as \_link time optimization* and the `-flto` flag, is available on very recent versions of CMake. You can turn this on with «variable:CMAKE_INTERPROCEDURAL_OPTIMIZATION» (CMake 3.9+ only) or the «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» property on targets. Support for GCC and Clang was added in CMake 3.8. If you set `cmake_minimum_required(VERSION 3.9)` or better (see «policy:CMP0069»), setting this to `ON` on a target is an error if the compiler doesn't support it. You can use check_ipo_supported(), from the built-in «module:CheckIPOSupported» module, to see if support is available before hand. An example of 3.9 style usage:
+{{ prop.format('tgt', 'INTERPROCEDURAL_OPTIMIZATION') }}, best known as _link time optimization_ and the `-flto` flag, is available on very recent versions of CMake. You can turn this on with {{ variable.format('CMAKE_INTERPROCEDURAL_OPTIMIZATION') }} (CMake 3.9+ only) or the {{ prop.format('tgt', 'INTERPROCEDURAL_OPTIMIZATION') }} property on targets. Support for GCC and Clang was added in CMake 3.8. If you set `cmake_minimum_required(VERSION 3.9)` or better (see {{ policy.format('CMP0069') }}, setting this to `ON` on a target is an error if the compiler doesn't support it. You can use check_ipo_supported(), from the built-in {{ module.format('CheckIPOSupported') }} module, to see if support is available before hand. An example of 3.9 style usage:
 
 ```cmake
 include(CheckIPOSupported)

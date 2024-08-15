@@ -8,11 +8,10 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 - `$comment` supported in preset files
 - `cmake -LR <regex>` to search the cache
 
-
 ## [CMake 3.30][]: C++26
 
 This release adds C++26 support and a way to get the latest supported standard
-for a compiler.  This release makes a lot of small changes not listed below,
+for a compiler. This release makes a lot of small changes not listed below,
 like better TLS support, some generator expression updates, and some schema
 updates.
 
@@ -24,7 +23,6 @@ updates.
 - Better support (new variables and targets) for Windows Python debug builds, and `DEBUG_POSTFIX` now added by `python_add_library`
 - FindBoost removed
 - Visual Studio 2008 support removed
-
 
 ## [CMake 3.29][]: Build before testing
 
@@ -299,7 +297,7 @@ fixes were implemented, especially to newer features, such as to FindPython, Fin
 - Initially released [November 26, 2019](https://blog.kitware.com/cmake-3-16-0-available-for-download/)
 - Added support for Objective C and Objective C++ languages
 - Support for precompiling headers, with `target_precompile_headers`
-- Support for "Unity" or "Jumbo" builds (merging source files) with «variable:CMAKE_UNITY_BUILD»
+- Support for "Unity" or "Jumbo" builds (merging source files) with {{ variable.format('CMAKE_UNITY_BUILD') }}
 - CTest: Can now skip based on regex, expand lists
 - Several new features to control RPath.
 - Generator expressions work in more places, like build and install paths
@@ -311,13 +309,13 @@ This release has many smaller polishing changes, include several of improvements
 module. `export(PACKAGE)` has drastically changed; it now no longer touches `$HOME/.cmake` by default (if CMake Minimum version is 3.15 or higher), and requires an extra step if a user wants to use it. This is generally less surprising.
 
 - Initially released [July 17, 2019](https://blog.kitware.com/cmake-3-15-0-available-for-download/)
-- «envvar:CMAKE_GENERATOR» environment variable added to control default generator
+- {{ envvar.format('CMAKE_GENERATOR') }} environment variable added to control default generator
 - Multiple target support in build mode, `cmake . --build --target a b`
 - Shortcut `-t` for `--target`
 - Install support, `cmake . --install`, does not invoke the build system
 - Support for `--loglevel` and `NOTICE`, `VERBOSE`, `DEBUG`, and `TRACE` for `message`
-- The «command:list» command gained `PREPEND`, `POP_FRONT`, and `POP_BACK`
-- «command:execute_process» gained `COMMAND_ECHO` option («variable:CMAKE_EXECUTE_PROCESS_COMMAND_ECHO») allows you to automatically echo commands before running them
+- The {{ command.format('list') }} command gained `PREPEND`, `POP_FRONT`, and `POP_BACK`
+- {{ command.format('execute_process') }} gained `COMMAND_ECHO` option ({{ variable.format('CMAKE_EXECUTE_PROCESS_COMMAND_ECHO') }}) allows you to automatically echo commands before running them
 - Several Ninja improvements, include SWIFT language support
 - Compiler and list improvements to generator expressions
 
@@ -329,8 +327,8 @@ Quite a few more find packages produce targets. The new Visual Studio 16 2019 ge
 - Initially released [March 14, 2019](https://blog.kitware.com/cmake-3-14-0-available-for-download/)
 - The cmake `--build` command gained `-v/--verbose`, to use verbose builds if your build tool supports it
 - The FILE command gained `CREATE_LINK`, `READ_SYMLINK`, and `SIZE`
-- «command:get*filename_component» gained `LAST_EXT` and `NAME_WLE` to access just the \_last* extension on a file, which would get `.zip` on a file such as `version.1.2.zip` (very handy!)
-- You can see if a variable is defined in the CACHE with `DEFINED CACHE{VAR}` in an «command:if» statement.
+- {{ command.format('get_filename_component') }} gained `LAST_EXT` and `NAME_WLE` to access just the _last_ extension on a file, which would get `.zip` on a file such as `version.1.2.zip` (very handy!)
+- You can see if a variable is defined in the CACHE with `DEFINED CACHE{VAR}` in an {{ command.format('if') }} statement.
 - `BUILD_RPATH_USE_ORIGIN` and CMake version were added to improve handling of RPath in the build directory.
 - The CMake server mode is now being replaced with a file API, starting in this release. Will affect IDEs in the long run.
 

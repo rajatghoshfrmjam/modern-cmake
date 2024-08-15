@@ -31,7 +31,7 @@ This is the command line for running clang-tidy, as a list (remember, a semicolo
 
 Here is a simple example of using Clang-Tidy:
 
-```term
+```bash
 ~/package # cmake -S . -B build-tidy -DCMAKE_CXX_CLANG_TIDY="$(which clang-tidy);-fix"
 ~/package # cmake --build build -j 1
 ```
@@ -62,13 +62,13 @@ This is an example for using include what you use. First, you'll need to have
 the tool, such as in a docker container or with brew (macOS) with `brew install include-what-you-use`. Then, you can pass this into your build without
 modifying the source:
 
-```term
+```bash
 ~/package # cmake -S . -B build-iwyu -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE=include-what-you-use
 ```
 
 Finally, you can collect the output and (optionally) apply the fixes:
 
-```term
+```bash
 ~/package # cmake --build build-iwyu 2> iwyu.out
 ~/package # fix_includes.py < iwyu.out
 ```
@@ -85,7 +85,7 @@ Clang-format doesn't really have an integration with CMake, unfortunately. You c
 
 The following two line would do that in a git repository in bash (assuming you have a `.clang-format` file):
 
-```term
-gitbook $ git ls-files -- '*.cpp' '*.h' | xargs clang-format -i -style=file
-gitbook $ git diff --exit-code --color
+```bash
+$ git ls-files -- '*.cpp' '*.h' | xargs clang-format -i -style=file
+$ git diff --exit-code --color
 ```

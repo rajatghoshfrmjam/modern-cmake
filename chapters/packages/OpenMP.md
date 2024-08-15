@@ -26,8 +26,10 @@ endif()
 target_link_libraries(MyTarget PUBLIC OpenMP::OpenMP_CXX)
 ```
 
-{% hint style='danger' %}
-Warning: CMake < 3.4 has a bug in the Threads package that requires you to have the `C` language enabled.
-{% endhint %}
+:::{danger}
+
+CMake < 3.4 has a bug in the Threads package that requires you to have the `C` language enabled.
+
+:::
 
 [openmp]: https://cmake.org/cmake/help/latest/module/FindOpenMP.html

@@ -6,7 +6,7 @@ GoogleTest and GoogleMock are classic options; personally, I personally would re
 
 To use this method, just checkout GoogleTest as a submodule:[^1]
 
-```cmake
+```bash
 git submodule add --branch=release-1.8.0 ../../google/googletest.git extern/googletest
 ```
 

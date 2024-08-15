@@ -8,7 +8,11 @@ Most importantly, there are _lots of improvements_ in CMake support in more rece
 
 ROOT 6.10+ supports config file discovery, so you can just do:
 
-[import:'find_package', lang:'cmake'](../../examples/root-simple/CMakeLists.txt)
+```{literalinclude} ../../examples/root-simple/CMakeLists.txt
+:start-after: "[find_package]"
+:end-before: "[find_package]"
+:language: cmake
+```
 
 to attempt to find ROOT. If you don't have your paths set up, you can pass `-DROOT_DIR=$ROOTSYS/cmake` to find ROOT. (But, really, you should source `thisroot.sh`).
 
@@ -18,7 +22,11 @@ ROOT 6.12 and earlier do not add the include directory for imported targets. ROO
 
 To link, just pick the libraries you want to use:
 
-[import:'add_and_link', lang:'cmake'](../../examples/root-simple/CMakeLists.txt)
+```{literalinclude} ../../examples/root-simple/CMakeLists.txt
+:start-after: "[add_and_link]"
+:end-before: "[add_and_link]"
+:language: cmake
+```
 
 If you'd like to see the default list, run `root-config --libs` on the command line. In Homebrew ROOT 6.18 this would be:
 
@@ -48,7 +56,11 @@ ROOT [provides a utility](https://root.cern.ch/how/integrate-root-my-project-cma
 
 Here's what it would look like:
 
-[import:'core', lang:'cmake'](../../examples/root-usefile/CMakeLists.txt)
+```{literalinclude} ../../examples/root-usefile/CMakeLists.txt
+:start-after: "[core]"
+:end-before: "[core]"
+:language: cmake
+```
 
 ## Components
 
