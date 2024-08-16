@@ -21,7 +21,7 @@ The next two lists are heavily based on the excellent gist [Effective Modern CMa
 - **Use lowercase function names**: CMake functions and macros can be called lower or upper case. Always use lower case. Upper case is for variables.
 - **Use `cmake_policy` and/or range of versions**: Policies change for a reason. Only piecemeal set OLD policies if you have to.
 
-## Selecting a minimum in 2022:
+## Selecting a minimum in 2024:
 
 What minimum CMake should you _run_ locally, and what minimum should you _support_ for people using your
 code? Since you are reading this, you should be able to get a release in the last few versions of CMake;
@@ -34,22 +34,29 @@ at least as new as your compiler.
 
 ### What minimum to choose - OS support:
 
-- 3.4: The bare minimum. Never set less.
-- 3.7: Debian old-stable.
-- 3.10: Ubuntu 18.04.
-- 3.11: CentOS 8 (use EPEL or AppSteams, though)
-- 3.13: Debian stable.
 - 3.16: Ubuntu 20.04.
+- 3.17: Amazon Linux
 - 3.19: First to support Apple Silicon.
+- 3.20: CentOS 8.
+- 3.22: Ubuntu 22.04.
+- 3.25: Debian 12 (11 backports)
+- 3.28: Ubuntu 24.04.
+- 3.29: Debian 13 (12 backports)
 - latest: pip/conda-forge/homebew/chocolaty, etc.
 
 ### What minimum to choose - Features:
 
-- 3.8: C++ meta features, CUDA, lots more
 - 3.11: `IMPORTED INTERFACE` setting, faster, FetchContent, `COMPILE_LANGUAGE` in IDEs
 - 3.12: C++20, `cmake --build build -j N`, `SHELL:`, FindPython
 - 3.14/3.15: CLI, FindPython updates
 - 3.16: Unity builds / precompiled headers, CUDA meta features
-- 3.17/3.18: Lots more CUDA, metaprogramming
+- 3.17/3.18: Lots more CUDA, metaprogramming, FindPython updates
+- 3.19: Presets
+- 3.20: C++23, `cmake_path`
+- 3.24: Package finder
+- 3.25: Blocks for scoping
+- 3.28: C++20 modules
+- 3.29: Build before test target
+- 3.30: Full C++26 support
 
 [effective modern cmake]: https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1

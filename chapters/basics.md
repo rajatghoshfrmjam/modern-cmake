@@ -6,7 +6,7 @@ Here's the first line of every `CMakeLists.txt`, which is the required name of
 the file CMake looks for:
 
 ```cmake
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.15)
 ```
 
 Let's mention a bit of CMake syntax. The command name
@@ -22,50 +22,27 @@ newest CMake versions. If you set it to 3.3 or less, you'll get the wrong
 hidden symbols behaviour, etc. A list of policies and versions is available at
 {{ cmake.format('policies') }}.
 
-Starting in CMake 3.12, this supports a range, such as `VERSION 3.1...3.15`;
-this means you support as low as 3.1 but have also tested it with the new
-policy settings up to 3.15. This is much nicer on users that need the better
+Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...3.30`;
+this means you support as low as 3.15 but have also tested it with the new
+policy settings up to 3.30. This is much nicer on users that need the better
 settings, and due to a trick in the syntax, it's backward compatible with older
-versions of CMake (though actually running CMake 3.1-3.11 will only set the 3.1
-version of the policies in this example, since those versions didn't treat this
-specially). New versions of policies tend to be most important for macOS and
-Windows users, who also usually have a very recent version of CMake.
+versions of CMake (though actually running CMake 3.1-3.11 will only set the old
+version of the policies, since those versions didn't treat this specially). New
+versions of policies tend to be most important for macOS and Windows users, who
+also usually have a very recent version of CMake.
 
 This is what new projects should do:
 
 ```cmake
-cmake_minimum_required(VERSION 3.7...3.30)
-
-if(${CMAKE_VERSION} VERSION_LESS 3.12)
-    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
-endif()
+cmake_minimum_required(VERSION 3.15...3.30)
 ```
 
-If CMake version is less than 3.12, the if block will be true, and the policy
-will be set to the current CMake version. If CMake is 3.12 or higher, the if
-block will be false, but the new syntax in `cmake_minimum_required` will be
-respected and this will continue to work properly!
-
-WARNING: MSVC's CMake server mode [originally had a
-bug](https://github.com/fmtlib/fmt/issues/809) in reading this format, so if
-you need to support non-command line Windows builds for older MSVC versions,
-you will want to do this instead:
-
-```cmake
-cmake_minimum_required(VERSION 3.7)
-
-if(${CMAKE_VERSION} VERSION_LESS 3.30)
-    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
-else()
-    cmake_policy(VERSION 3.30)
-endif()
-```
 
 :::{tip}
 
 If you really need to set to a low value here, you can use
 {{ command.format('cmake_policy') }} to conditionally increase the policy level or set a
-specific policy. Please at least do this for your macOS users!
+specific policy.
 
 :::
 
@@ -152,7 +129,7 @@ Targets can have include directories, linked libraries (or linked targets), comp
 See if you can follow the following file. It makes a simple C++11 library and a program using it. No dependencies. I'll discuss more C++ standard options later, using the CMake 3.8 system for now.
 
 ```cmake
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.15...3.30)
 
 project(Calculator LANGUAGES CXX)
 

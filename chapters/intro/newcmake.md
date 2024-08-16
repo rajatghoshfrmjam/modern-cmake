@@ -108,7 +108,7 @@ of CMake introduced a few releases ago are now usable in `find_` commands with
 - C++26 support
 - LTO for CUDA with nvcc
 - Workflow presets added, package presets too.
-- `SYSTEM` added to `add_subdirectory`, `FetchContent`, and as a directory property
+- `SYSTEM` added to `add_subdirectory`, `FetchContent`, and as a directory property.
 - `block()`/`endblock()` for policy/variable scopes, also `PROPOGATE` in `return()`
 - `BSD` & `LINUX` variables added
 - `VALIDATOR` function for `find_*` commands.
@@ -153,7 +153,7 @@ couple of compilers were added.
 - A couple of new supported compilers, and better C# support.
 - `FILE_SET` for `install` and `target_sources` header-only source files.
 - `<INTERFACE_>HEADER_SETS`, `<INTERFACE_>HEADER_DIRS` for target headers.
-- `CUDA_ARCHITECTURES` support for all and all-major.a
+- `CUDA_ARCHITECTURES` support for all and all-major.
 - DEBUG messages from can be enabled for `find_*` or find modules.
 - `define_property()` has a handy `INITIALIZE_FROM_VARIABLE` option.
 - `CMAKE_<SYSTEM_>IGNORE_PREFIX_PATH` to control `find_*` commands.
