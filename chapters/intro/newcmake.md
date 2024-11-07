@@ -4,9 +4,26 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
+Nothing to report yet.
+
+## [CMake 3.31][]: Better workflow presets
+
+This release adds a collection of small features and additions, along with some
+experimental new technology. Some updates to presets, including a new shorter
+command for workflow presents.
+
+- Initially released November 6, 2024
 - LFortan now supported
 - `$comment` supported in preset files
 - `cmake -LR <regex>` to search the cache
+- `cmake --workflow <name>` now supported (one less argument)
+- `codegen` target and `CODEGEN` in `add_custom_command`
+- Added `cmake_pkg_config` command to extract values from pkg-config files.
+- `CMAKE_HOST_EXECUTABLE_SUFFIX` was added
+- Better CUDA support, including getting the host compiler and OpenMP
+- Support for CMake 3.10 and older deprecated
+- Lots of smaller tweaks and cleanup
+- [Experimental](https://www.kitware.com/a-year-closer-to-standard-c-dependency-management/) CPS (common package specification) support
 
 ## [CMake 3.30][]: C++26
 
@@ -19,7 +36,7 @@ updates.
 - A `$<QUOTE>` generator expression was added to produce `"`
 - C++26 compile features support fully implemented (partial since 3.25)
 - `CMAKE_<LANG>_STANDARD_LATEST` holds the latest standard the current compiler supports
-- Free-threaded Python 3.13+ support
+- Free-threaded Python 3.13+ support (3.30.3+ best)
 - Better support (new variables and targets) for Windows Python debug builds, and `DEBUG_POSTFIX` now added by `python_add_library`
 - FindBoost removed
 - Visual Studio 2008 support removed
