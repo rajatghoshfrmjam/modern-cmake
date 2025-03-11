@@ -52,7 +52,12 @@ Selecting a compiler must be done on the first run in an empty directory. It's n
 ~/package/build $ CC=clang CXX=clang++ cmake ..
 ```
 
-That sets the environment variables in bash for CC and CXX, and CMake will respect those variables. This sets it just for that one line, but that's the only time you'll need those; afterwards CMake continues to use the paths it deduces from those values.
+That sets the environment variables in bash for CC and CXX, and CMake will respect those variables. If you are using Git Bash, you should use `export` to propagate the variables to subprocesses:
+```bash
+~/package/build $ export CC=clang CXX=clang++ cmake ..
+```
+
+This sets it just for that one line, but that's the only time you'll need those; afterwards CMake continues to use the paths it deduces from those values.
 
 ## Picking a generator
 
