@@ -18,10 +18,10 @@ Here's the Classic CMake Build Procedure (TM):
 You can replace the make line with `cmake --build .` if you'd like, and it will call `make` or whatever build tool you are using. If you are using a newer version of CMake (which you usually should be, except for checking compatibility with older CMake), you can instead do this:
 
 ```bash
-~/package $ cmake -S . -B build
+~/package $ cmake -S. -Bbuild
 ~/package $ cmake --build build
 ```
-
+(`-S` is the source location containing `CMakeLists.txt`, and `-B` is the build directory, which will be created.)
 Any _one_ of these commands will install:
 
 ```bash
