@@ -7,7 +7,7 @@ Certainly there are no shortage of problems when building.
 But I think that, in 2023, we have a very good solution to quite a few of those problems.
 It's CMake. Not CMake 2.8 though; that was released before C++11 even existed!
 Nor the horrible examples out there for CMake (even those posted on KitWare's own tutorials list).
-I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 3.31+!
+I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 4.0+!
 It's clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
 
 :::{note}

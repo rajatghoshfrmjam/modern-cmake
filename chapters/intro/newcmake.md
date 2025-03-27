@@ -6,13 +6,32 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 Nothing to report yet.
 
+## [CMake 4.0][]: Out with the old
+
+This version removes support for setting the CMake policy below 3.5. This means
+`cmake_minimum_required(VERSION 3.4)` is now an error, but
+`cmake_minimum_required(VERSION 3.4...3.15)`, for example, is fine. Setting
+this below 3.10 has been a warning for quite some time now. You can use
+`CMAKE_POLICY_VERSION_MINIMUM` to work around third-party libraries that
+haven't updated.
+
+- Initially released March 27, 2025
+- A new `CMAKE_POLICY_VERSION_MINIMUM` variable to build old projects (support for <3.5 removed)
+- Added a flag (`--project-file`) to control the `CMakeLists.txt` filename (for development only)
+- Some new linker features, like `LINKER:` prefix and `CMAKE_LINK_WARNING_AS_ERROR`
+- You can set the debugger working directory for targets
+- FindPython can be run multiple times in a directory using new `Python_ARTIFACTS_PREFIX`
+- Generator expressions can convert to `NATIVE_PATH`
+- Visual Studio generators 2015/2017 work like the later ones now with platform selection
+- macOS SDK selection simplified and less automatic
+
 ## [CMake 3.31][]: Better workflow presets
 
 This release adds a collection of small features and additions, along with some
 experimental new technology. Some updates to presets, including a new shorter
 command for workflow presents.
 
-- Initially released November 6, 2024
+- Initially released [November 6, 2024](https://www.kitware.com/cmake-3-31-0-available-for-download/)
 - LFortan now supported
 - `$comment` supported in preset files
 - `cmake -LR <regex>` to search the cache
@@ -569,5 +588,7 @@ There were a ton of additions to this version of CMake, primarily to fill out th
 [cmake 3.28]: https://cmake.org/cmake/help/latest/release/3.28.html
 [cmake 3.29]: https://cmake.org/cmake/help/latest/release/3.29.html
 [cmake 3.30]: https://cmake.org/cmake/help/latest/release/3.30.html
+[cmake 3.31]: https://cmake.org/cmake/help/latest/release/3.31.html
+[cmake 4.0]: https://cmake.org/cmake/help/latest/release/4.0.html
 [cmake master]: https://cmake.org/cmake/help/git-master/release/index.html
 [fastercmake]: https://blog.kitware.com/improving-cmakes-runtime-performance/
