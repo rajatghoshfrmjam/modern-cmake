@@ -4,19 +4,11 @@ People love to hate build systems.
 Just watch the talks from CppCon17 to see examples of developers making the state of build systems the brunt of jokes.
 This raises the question: Why?
 Certainly there are no shortage of problems when building.
-But I think that, in 2023, we have a very good solution to quite a few of those problems.
+But I think that we have a very good solution to quite a few of those problems.
 It's CMake. Not CMake 2.8 though; that was released before C++11 even existed!
 Nor the horrible examples out there for CMake (even those posted on KitWare's own tutorials list).
 I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 4.0+!
 It's clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
-
-:::{note}
-
-Are you interested in using CMake to build Python packages? I'm working on scikit-build-core, [proposal described here][skprop]! Let me know if you have a use case!
-
-[skprop]: https://iscinumpy.gitlab.io/post/scikit-build-proposal/
-
-:::
 
 :::{attention}
 
@@ -25,11 +17,6 @@ You can also [download a copy as a PDF](https://CLIUtils.gitlab.io/modern-cmake/
 
 :::
 
-:::{warning}
-
-This book has just been moved from GitBook to JupyterBook. There might be some rough edges after the transition - feel free to report or fix issues!
-
-:::
 
 In short, here are the most likely questions in your mind if you are considering Modern CMake:
 
@@ -61,28 +48,39 @@ So, if you use a library that is designed to be included in your code, you have 
 And that will quickly be the common denominator if you include multiple projects.
 And, if you need a library that's preinstalled, the chances of it having a find CMake script or config CMake script are excellent.
 
-## Why use a Modern CMake?
+## Shouldn't I support the oldest version possible?
 
-Around CMake 2.6-2.8, CMake started taking over. It was in most of the package managers for Linux OS's, and was being used in lots of packages.
+Short answer: No.
 
-Then Python 3 came out.
+If you set your minimum version of CMake too low, CMake will produce a warning
+or even an error. The oldest you can set it to is 3.5, with anything under 3.10
+producing a warning, as of CMake 4.0 While a user can workaround this in
+emergencies by setting `CMAKE_POLICY_VERSION_MINIMUM` to a valid version, you
+don't want users to have to do that.
 
-I know, this should have nothing whatsoever to do with CMake.
+You really should _at least_ use a version of CMake that came out after your
+compiler, since it needs to know compiler flags, etc, for that version.  And,
+since CMake will dumb itself down to the minimum required version in your CMake
+file, installing a new CMake, even system wide, is pretty safe.  You should _at
+least_ install it locally.  It's easy (1-2 lines in many cases), and you'll
+find that 5 minutes of work will save you hundreds of lines and hours of
+`CMakeLists.txt` writing, and will be much easier to maintain in the long run.
 
-But it had a 3.
-And it followed 2.
-And it was a hard, ugly, transition that is still ongoing in some places, even today.
+Quick summary of good minimums (more detail in book):
 
-I believe that CMake 3 had the bad luck to follow Python 3.[^1]
-Even though every version of CMake is insanely backward compatible, the 3 series was treated as if it were something new.
-And so, you'll find OSs like CentOS7 with GCC 4.8, with almost-complete C++14 support, and CMake 2.8, which came out years before C++11.
+- 3.24: The package finding system is great, good minimum to support package authors.
+- 3.18: Pretty good support for Python and CUDA, most systems have at least this.
+- 3.15: This is as low as most projects should go, Ubuntu 20.04+ has 3.16+.
+- 3.10: Lowest version to avoid a CMake warning, Ubuntu 18.04+.
+- 3.5: If you _really_ need it.
+- As long as you set a maximum version, you can even set minimums below this. But don't.
 
-You really should _at least_ use a version of CMake that came out after your compiler, since it needs to know compiler flags, etc, for that version.
-And, since CMake will dumb itself down to the minimum required version in your CMake file, installing a new CMake, even system wide, is pretty safe.
-You should _at least_ install it locally.
-It's easy (1-2 lines in many cases), and you'll find that 5 minutes of work will save you hundreds of lines and hours of `CMakeLists.txt` writing, and will be much easier to maintain in the long run.
+Always set the maximum version to the highest version you test (like 4.0).
+This will continue to work until CMake drops the _maximum_ version from it's
+support window, rather than the minimum!
 
-This book tries to solve the problem of the poor examples and best practices that you'll find proliferating the web.
+This book tries to solve the problem of the poor examples and best practices
+that you'll find proliferating the web.
 
 ## Other sources
 
@@ -107,5 +105,3 @@ There are some other places to find good information on the web. Here are some o
 Modern CMake was originally written by [Henry Schreiner](https://iscinumpy.gitlab.io). Other contributors can be found [listed on GitLab](https://gitlab.com/CLIUtils/modern-cmake/-/network/master).
 
 [hsf cmake training]: https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html
-
-[^1]: CMake 3.0 also removed several long deprecated features from very old versions of CMake and make one very tiny backwards incompatible change to syntax related to square brackets, so this is not entirely fair; there might be some very, very old CMake files that would stop working with 3. I've never seen one, though.

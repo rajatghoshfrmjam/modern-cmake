@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -21,13 +21,13 @@ repos:
         additional_dependencies: [pyyaml]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: "v2.2.5"
+    rev: "v2.4.1"
     hooks:
       - id: codespell
         args: ["-L", "ba"]
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.0.0"
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: "v3.5.3"
     hooks:
       - id: prettier
         types_or: [yaml, markdown, html, css, scss, javascript, json]

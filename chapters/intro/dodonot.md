@@ -21,7 +21,7 @@ The next two lists are heavily based on the excellent gist [Effective Modern CMa
 - **Use lowercase function names**: CMake functions and macros can be called lower or upper case. Always use lower case. Upper case is for variables.
 - **Use `cmake_policy` and/or range of versions**: Policies change for a reason. Only piecemeal set OLD policies if you have to.
 
-## Selecting a minimum in 2024:
+## Selecting a minimum in 2025:
 
 What minimum CMake should you _run_ locally, and what minimum should you _support_ for people using your
 code? Since you are reading this, you should be able to get a release in the last few versions of CMake;
@@ -35,13 +35,15 @@ at least as new as your compiler.
 ### What minimum to choose - OS support:
 
 - 3.16: Ubuntu 20.04.
-- 3.17: Amazon Linux
+- 3.17: Amazon Linux 1/2
 - 3.19: First to support Apple Silicon.
 - 3.20: CentOS 8.
 - 3.22: Ubuntu 22.04.
 - 3.25: Debian 12 (11 backports)
+- 3.26: Rocky Linux 8/9, AlmaLinux 8/9, CentOS Stream 8/9
 - 3.28: Ubuntu 24.04.
-- 3.29: Debian 13 (12 backports)
+- 3.30: CentOS Stream 10
+- 3.31: Debian 13 (12 backports)
 - latest: pip/conda-forge/homebew/chocolaty, etc.
 
 ### What minimum to choose - Features:
