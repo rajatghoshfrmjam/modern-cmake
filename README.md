@@ -7,7 +7,7 @@ Certainly there are no shortage of problems when building.
 But I think that we have a very good solution to quite a few of those problems.
 It's CMake. Not CMake 2.8 though; that was released before C++11 even existed!
 Nor the horrible examples out there for CMake (even those posted on KitWare's own tutorials list).
-I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 4.0+!
+I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 4.1+!
 It's clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
 
 :::{attention}
@@ -54,7 +54,7 @@ Short answer: No.
 
 If you set your minimum version of CMake too low, CMake will produce a warning
 or even an error. The oldest you can set it to is 3.5, with anything under 3.10
-producing a warning, as of CMake 4.0 While a user can workaround this in
+producing a warning, as of CMake 4.1 While a user can workaround this in
 emergencies by setting `CMAKE_POLICY_VERSION_MINIMUM` to a valid version, you
 don't want users to have to do that.
 
@@ -75,7 +75,7 @@ Quick summary of good minimums (more detail in book):
 - 3.5: If you _really_ need it.
 - As long as you set a maximum version, you can even set minimums below this. But don't.
 
-Always set the maximum version to the highest version you test (like 4.0).
+Always set the maximum version to the highest version you test (like 4.1).
 This will continue to work until CMake drops the _maximum_ version from it's
 support window, rather than the minimum!
 

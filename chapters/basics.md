@@ -22,9 +22,9 @@ newest CMake versions. If you set it to 3.3 or less, you'll get the wrong
 hidden symbols behaviour, etc. A list of policies and versions is available at
 {{ cmake.format('policies') }}.
 
-Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...4.0`;
+Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...4.1`;
 this means you support as low as 3.15 but have also tested it with the new
-policy settings up to 4.0. This is much nicer on users that need the better
+policy settings up to 4.1. This is much nicer on users that need the better
 settings, and due to a trick in the syntax, it's backward compatible with older
 versions of CMake (though actually running CMake 3.1-3.11 will only set the old
 version of the policies, since those versions didn't treat this specially). New
@@ -34,7 +34,7 @@ also usually have a very recent version of CMake.
 This is what new projects should do:
 
 ```cmake
-cmake_minimum_required(VERSION 3.15...4.0)
+cmake_minimum_required(VERSION 3.15...4.1)
 ```
 
 
@@ -129,7 +129,7 @@ Targets can have include directories, linked libraries (or linked targets), comp
 See if you can follow the following file. It makes a simple C++11 library and a program using it. No dependencies. I'll discuss more C++ standard options later, using the CMake 3.8 system for now.
 
 ```cmake
-cmake_minimum_required(VERSION 3.15...4.0)
+cmake_minimum_required(VERSION 3.15...4.1)
 
 project(Calculator LANGUAGES CXX)
 

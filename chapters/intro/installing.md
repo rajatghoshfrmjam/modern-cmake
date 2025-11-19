@@ -6,7 +6,7 @@ Your CMake version should be newer than your compiler. It should be newer than t
 
 :::
 
-If you have a built in copy of CMake, it isn't special or customized for your system. You can easily install a new one instead, either on the system level or the user level. Feel free to instruct your users here if they complain about a CMake requirement being set too high. Especially if they want 3.15+ support. Maybe even if they want 4.0+ support...
+If you have a built in copy of CMake, it isn't special or customized for your system. You can easily install a new one instead, either on the system level or the user level. Feel free to instruct your users here if they complain about a CMake requirement being set too high. Especially if they want 3.15+ support. Maybe even if they want 4.1+ support...
 
 ## Quick list (more info on each method below)
 
@@ -37,14 +37,14 @@ You can [download CMake from KitWare][download]. This is how you will probably g
 On Linux, there are several options. Kitware provides a [Debian/Ubuntu apt repository][apt], as well as [snap packages][snap]. There are universal Linux binaries provided, but you'll need to pick an install location. If you already use `~/.local` for user-space packages, the following single line command[^1] will get CMake for you [^2]:
 
 ```bash
-~ $ wget -qO- "https://cmake.org/files/v4.0/cmake-4.0.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C ~/.local
+~ $ wget -qO- "https://cmake.org/files/v4.1/cmake-4.1.3-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C ~/.local
 ```
 
 The names changed in 3.20; older releases had names like `cmake-3.19.7-Linux-x86_64.tar.gz`. If you just want a local folder with CMake only:
 
 ```bash
-~ $ mkdir -p cmake-4.0 && wget -qO- "https://cmake.org/files/v4.0/cmake-4.0.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C cmake-4.0
-~ $ export PATH=`pwd`/cmake-4.0/bin:$PATH
+~ $ mkdir -p cmake-4.1 && wget -qO- "https://cmake.org/files/v4.1/cmake-4.1.3-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C cmake-4.1
+~ $ export PATH=`pwd`/cmake-4.1/bin:$PATH
 ```
 
 You'll obviously want to append to the PATH every time you start a new terminal, or add it to your `.bashrc` or to an [LMod][] system.
@@ -52,7 +52,7 @@ You'll obviously want to append to the PATH every time you start a new terminal,
 And, if you want a system install, install to `/usr/local`; this is an excellent choice in a Docker container, for example on GitLab CI. Do not try it on a non-containerized system.
 
 ```bash
-docker $ wget -qO- "https://cmake.org/files/v4.0/cmake-4.0.0-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C /usr/local
+docker $ wget -qO- "https://cmake.org/files/v4.1/cmake-4.1.3-linux-x86_64.tar.gz" | tar --strip-components=1 -xz -C /usr/local
 ```
 
 If you are on a system without wget, replace `wget -qO-` with `curl -s`.
@@ -96,7 +96,7 @@ The default on 8 is not too bad, but you should not use the default on the end-o
 [![Ubuntu 18.04 package](https://repology.org/badge/version-for-repo/ubuntu_18_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/bionic/+source/cmake)
 [![Ubuntu 20.04 package](https://repology.org/badge/version-for-repo/ubuntu_20_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/focal/+source/cmake)
 [![Ubuntu 22.04 package](https://repology.org/badge/version-for-repo/ubuntu_22_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/jammy/+source/cmake)
-[![Ubuntu 24.04 package](https://repology.org/badge/version-for-repo/ubuntu_24_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/noble/+source/cmake)
+[![Ubuntu 24.14 package](https://repology.org/badge/version-for-repo/ubuntu_24_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/noble/+source/cmake)
 
 #### Debian
 
@@ -130,8 +130,8 @@ Just `pip install cmake` on many systems. Add `--user` if you have to (modern pi
 
 | Distribution                                                                                                                         | CMake version | Notes                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------- | ------------------------------------------------------------ |
-| [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) | 4.0.0        | kept up to date                                              |
-| [GitHub Actions 20.04](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md)                  | 4.0.0        | Same runners as Azure DevOps                                 |
+| [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) | 4.1        | kept up to date                                              |
+| [GitHub Actions 20.04](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md)                  | 4.1        | Same runners as Azure DevOps                                 |
 
 If you are using GitHub Actions, also see the [jwlawson/actions-setup-cmake](https://github.com/marketplace/actions/actions-setup-cmake) action, which can install your selection of CMake, even in a docker action run.
 

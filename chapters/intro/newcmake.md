@@ -6,6 +6,42 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 Nothing to report yet.
 
+## [CMake 4.2][]: Emscripten
+
+This version adds native Emscripten cross-compile support. There are lots of
+other smallish improvements too, like matching-case version variables from
+`find_package`, controls for object files, direct cache manipulation, and more.
+
+- Initially released Nov 19, 2025
+- File API updates (version 2.9), with more info on imported/interface targets
+- Visual Studio 18 2026 added (14 2015 deprecated)
+- Cross-compile support for Emscripten (WebAssembly)
+- `cmake -E copy_if_newer` (and directory version) added
+- `set(CACHE{<variable>}` (and `unset`) were added to directly manipulate the cache
+- `string(REGEX QUOTE)` added (like `re.escape` in Python)
+- New properties include `OBJECT_NAME` and `INSTALL_OBJECT_*` to control generated object files
+- Matching case `<PackageName>_VERSION` variables added to all find modules
+- NumPy no longer depends on Development.Module (CMP201)
+- ExternalProject can set environment variables
+
+
+## [CMake 4.1][]: Bits of polish
+
+This version improves the pkg-config integration, OPTIONAL for find commands,
+and other small changes.  This release seemed to be focused on polishing up
+some edge cases.
+
+- Initially released [August 5, 2025](https://www.kitware.com/cmake-4-1-0-available-for-download/)
+- `cmake_pkg_config` now supports `IMPORT` and `POPULATE`.
+- Some configure log improvements related to find commands.
+- `CMAKE_FIND_REQUIRED` added, along with new OPTIONAL keywords for all find commands.
+- `CMAKE_<LANG>_COMPILER_ARCHITECTURE_ID` now public, and filled in for most compilers.
+- NVIDIA support added to FindBLAS and FindLAPACK
+- FindPython modules now enforce consistency when cross-compiling (CMP0190)
+- Some GNUInstallDirs changes gated by CMP0192 and CMP0193
+
+
+
 ## [CMake 4.0][]: Out with the old
 
 This version removes support for setting the CMake policy below 3.5. This means
@@ -15,7 +51,7 @@ this below 3.10 has been a warning for quite some time now. You can use
 `CMAKE_POLICY_VERSION_MINIMUM` to work around third-party libraries that
 haven't updated.
 
-- Initially released March 27, 2025
+- Initially released [March 27, 2025](https://www.kitware.com/cmake-4-0-0-available-for-download/)
 - A new `CMAKE_POLICY_VERSION_MINIMUM` variable to build old projects (support for <3.5 removed)
 - Added a flag (`--project-file`) to control the `CMakeLists.txt` filename (for development only)
 - Some new linker features, like `LINKER:` prefix and `CMAKE_LINK_WARNING_AS_ERROR`
@@ -590,5 +626,7 @@ There were a ton of additions to this version of CMake, primarily to fill out th
 [cmake 3.30]: https://cmake.org/cmake/help/latest/release/3.30.html
 [cmake 3.31]: https://cmake.org/cmake/help/latest/release/3.31.html
 [cmake 4.0]: https://cmake.org/cmake/help/latest/release/4.0.html
+[cmake 4.1]: https://cmake.org/cmake/help/latest/release/4.1.html
+[cmake 4.2]: https://cmake.org/cmake/help/latest/release/4.2.html
 [cmake master]: https://cmake.org/cmake/help/git-master/release/index.html
 [fastercmake]: https://blog.kitware.com/improving-cmakes-runtime-performance/
