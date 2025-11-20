@@ -103,13 +103,13 @@ This command will create three files:
 - `${NAME}.cxx`: This file should be included in your sources when you make your library.
 - `lib{NAME}.rootmap` (`G__` prefix removed): The rootmap file in plain text
 - `lib{NAME}_rdict.pcm` (`G__` prefix removed): A [ROOT pre-compiled module file][]
-  The name (`${NAME}`) of the targetthat you must create is determined by the dictionary name; if the dictionary name starts with `G__`, it will be removed. Otherwise, the name is used directly.
+  The name (`${NAME}`) of the target that you must create is determined by the dictionary name; if the dictionary name starts with `G__`, it will be removed. Otherwise, the name is used directly.
 
 The final two output files must sit next to the library output. This is done by checking `CMAKE_LIBRARY_OUTPUT_DIRECTORY` (it will not pick up local target settings). If you have a libdir set but you don't have (global) install locations set, you'll also need to set `ARG_NOINSTALL` to `TRUE`.
 
 ### Building the dictionary with an existing target
 
-Instead of manually adding the generated to your library sources, you can ask ROOT to do this for you by passing a `MODULE` argument. This argument should specify the name of an existing build target:
+Instead of manually adding the generated dictionary to your library sources, you can ask ROOT to do this for you by passing a `MODULE` argument. This argument should specify the name of an existing build target:
 
 ```cmake
 add_library(Example)
