@@ -1,6 +1,6 @@
 # Catch
 
-[Catch2] (C++11 only version) is a powerful, idomatic testing solutions similar in philosophy to PyTest for Python. It supports a wider range of compilers than GTest, and is quick to support new things, like M1 builds on macOS. It also has a smaller but faster twin, [doctest](https://github.com/onqtam/doctest), which is quick to compile but misses features like matchers. To use Catch in a CMake project, there are several options.
+[Catch2] (C++11 only version) is a powerful, idiomatic testing solution similar in philosophy to PyTest for Python. It supports a wider range of compilers than GTest, and is quick to support new things, like M1 builds on macOS. It also has a smaller but faster twin, [doctest](https://github.com/onqtam/doctest), which is quick to compile but misses features like matchers. To use Catch in a CMake project, there are several options.
 
 ## Configure methods
 
@@ -25,7 +25,7 @@ endif()
 target_include_directories(catch_main PUBLIC "${CMAKE_CURRENT_BINARY_DIR}")
 ```
 
-This will two downloads when Catch 3 is released, as that now requires two files (but you no longer have to write a main.cpp). The `main.cpp` looks like this:
+This will require two downloads when Catch 3 is released, as that now requires two files (but you no longer have to write a main.cpp). The `main.cpp` looks like this:
 
 ```cpp
 #define CATCH_CONFIG_MAIN

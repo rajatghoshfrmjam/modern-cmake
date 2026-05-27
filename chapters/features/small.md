@@ -2,7 +2,7 @@
 
 There are lots of compiler and linker settings. When you need to add something special, you could check first to see if CMake supports it; if it does, you can avoid explicitly tying yourself to a compiler version. And, better yet, you explain what you mean in your CMakeLists, rather than spewing flags.
 
-The first and most common feature was C++ standards support, which got it's own chapter.
+The first and most common feature was C++ standards support, which got its own chapter.
 
 ## Position independent code
 

@@ -29,8 +29,8 @@ do that, it will make your development easier. For support, there are two ways t
 features added (which is what a developer cares about), or on common pre-installed CMakes (which is what a
 user cares about).
 
-Never select a minimum version older than the oldest compiler version you support. CMake should always be
-at least as new as your compiler.
+Never select a minimum version older than the oldest compiler you support. CMake should always be
+at least as new as the CMake that supported your oldest compiler.
 
 ### What minimum to choose - OS support:
 

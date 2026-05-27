@@ -76,7 +76,7 @@ Quick summary of good minimums (more detail in book):
 - As long as you set a maximum version, you can even set minimums below this. But don't.
 
 Always set the maximum version to the highest version you test (like 4.1).
-This will continue to work until CMake drops the _maximum_ version from it's
+This will continue to work until CMake drops the _maximum_ version from its
 support window, rather than the minimum!
 
 This book tries to solve the problem of the poor examples and best practices

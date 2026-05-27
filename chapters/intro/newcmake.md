@@ -65,10 +65,10 @@ haven't updated.
 
 This release adds a collection of small features and additions, along with some
 experimental new technology. Some updates to presets, including a new shorter
-command for workflow presents.
+command for workflow presets.
 
 - Initially released [November 6, 2024](https://www.kitware.com/cmake-3-31-0-available-for-download/)
-- LFortan now supported
+- LFortran now supported
 - `$comment` supported in preset files
 - `cmake -LR <regex>` to search the cache
 - `cmake --workflow <name>` now supported (one less argument)
@@ -149,13 +149,13 @@ is set to 3.27 or higher, the modules will be missing.
 - Better support for versions of MSVC.
 - Several new CUDA properties related to targeting .`cubin`/`.fatbin`/`.optixir`.
 - Setting `cmake_minimum_required` less than 3.5 is now deprecated.
-- FindCUDA simi-removed, use CUDA language and FindCUDAToolkit.
-- FindPythonLibs & FindPythonInterp simi-removed, use FindPython.
+- FindCUDA semi-removed, use CUDA language and FindCUDAToolkit.
+- FindPythonLibs & FindPythonInterp semi-removed, use FindPython.
 
 ## [CMake 3.26][]: Logging & Python
 
 Two important additions for FindPython, PyPy SOABI support & LimitedAPI/StableABI support, really enhance FindPython's use. There are quite
-a few nice fixes and new warnings, such as if you reverse the order of `project()` and `cmake_minimium_required()`. Logging has been moved
+a few nice fixes and new warnings, such as if you reverse the order of `project()` and `cmake_minimum_required()`. Logging has been moved
 from `CMakeOutput.log` and `CMakeError.log` to a new `CMakeConfigureLog.yaml` log.
 
 - Initially released [March 14, 2023](https://www.kitware.com/cmake-3-26-0-available-for-download/)
@@ -377,7 +377,7 @@ fixes were implemented, especially to newer features, such as to FindPython, Fin
 
 ## [CMake 3.15][] : CLI upgrade
 
-This release has many smaller polishing changes, include several of improvements to the CMake command line, such as control over the default generator through environment variables (so now it's easy to change the default generator to Ninja). Multiple targets are supported in `--build` mode, and `--install` mode added. CMake finally supports multiple levels of logging. Generator expressions gained a few handy tools. The still very new FindPython module continues to improve, and FindBoost is now more inline with Boost 1.70's new CONFIG
+This release has many smaller polishing changes, including several improvements to the CMake command line, such as control over the default generator through environment variables (so now it's easy to change the default generator to Ninja). Multiple targets are supported in `--build` mode, and `--install` mode added. CMake finally supports multiple levels of logging. Generator expressions gained a few handy tools. The still very new FindPython module continues to improve, and FindBoost is now more inline with Boost 1.70's new CONFIG
 module. `export(PACKAGE)` has drastically changed; it now no longer touches `$HOME/.cmake` by default (if CMake Minimum version is 3.15 or higher), and requires an extra step if a user wants to use it. This is generally less surprising.
 
 - Initially released [July 17, 2019](https://blog.kitware.com/cmake-3-15-0-available-for-download/)

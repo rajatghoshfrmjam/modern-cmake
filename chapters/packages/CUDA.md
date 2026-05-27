@@ -19,7 +19,7 @@ want to put this in somewhere conditionally:
 enable_language(CUDA)
 ```
 
-To check to see if CUDA is available, use CheckLanuage:
+To check to see if CUDA is available, use `check_language`:
 
 ```cmake
 include(CheckLanguage)
@@ -123,7 +123,7 @@ Variables that enabling the `CUDA` language provides:
 - `CMAKE_CUDA_COMPILER`: NVCC with location
 - `CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES`: Place for built-in Thrust, etc
 
-> ### Note that FindCUDA is deprecated, but for for versions of CMake < 3.18, the following functions required FindCUDA:
+> ### Note that FindCUDA is deprecated, but for versions of CMake < 3.18, the following functions required FindCUDA:
 >
 > - CUDA version checks / picking a version
 > - Architecture detection (Note: 3.12 fixes this partially)

@@ -138,7 +138,7 @@ target_include_directories(calclib PUBLIC include)
 target_compile_features(calclib PUBLIC cxx_std_11)
 
 add_executable(calc apps/calc.cpp)
-target_link_libraries(calc PUBLIC calclib)
+target_link_libraries(calc PRIVATE calclib)
 
 ```
 

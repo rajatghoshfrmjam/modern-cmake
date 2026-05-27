@@ -2,7 +2,7 @@
 
 ## Control flow
 
-CMake has an {{ command.format('if') }} statement, though over the years it has become rather complex. There are a series of all caps keywords you can use inside an if statement, and you can often refer to variables by either directly by name or using the `${}` syntax (the if statement historically predates variable expansion). An example if statement:
+CMake has an {{ command.format('if') }} statement, though over the years it has become rather complex. There are a series of all caps keywords you can use inside an if statement, and you can often refer to variables either directly by name or using the `${}` syntax (the if statement historically predates variable expansion). An example if statement:
 
 ```cmake
 if(variable)
@@ -90,7 +90,7 @@ If you want positional arguments, they are listed explicitly, and all other argu
 
 ## Arguments
 
-CMake has a named variable system that you've already seen in most of the build in CMake functions. You can use it with the {{ command.format('cmake_parse_arguments') }} function. If you want to support a version of CMake less than 3.5, you'll want to also include the {{ module.format('CMakeParseArguments') }} module, which is where it used to live before becoming a built in command. Here is an example of how to use it:
+CMake has a named variable system that you've already seen in most of the built-in CMake functions. You can use it with the {{ command.format('cmake_parse_arguments') }} function. If you want to support a version of CMake less than 3.5, you'll want to also include the {{ module.format('CMakeParseArguments') }} module, which is where it used to live before becoming a built in command. Here is an example of how to use it:
 
 ```cmake
 function(COMPLEX)
