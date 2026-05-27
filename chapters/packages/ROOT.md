@@ -9,8 +9,8 @@ Most importantly, there are _lots of improvements_ in CMake support in more rece
 ROOT 6.10+ supports config file discovery, so you can just do:
 
 ```{literalinclude} ../../examples/root-simple/CMakeLists.txt
-:start-after: "[find_package]"
-:end-before: "[find_package]"
+:start-after: [find_package]
+:end-before: [find_package]
 :language: cmake
 ```
 
@@ -23,8 +23,8 @@ ROOT 6.12 and earlier do not add the include directory for imported targets. ROO
 To link, just pick the libraries you want to use:
 
 ```{literalinclude} ../../examples/root-simple/CMakeLists.txt
-:start-after: "[add_and_link]"
-:end-before: "[add_and_link]"
+:start-after: [add_and_link]
+:end-before: [add_and_link]
 :language: cmake
 ```
 
@@ -57,8 +57,8 @@ ROOT [provides a utility](https://root.cern.ch/how/integrate-root-my-project-cma
 Here's what it would look like:
 
 ```{literalinclude} ../../examples/root-usefile/CMakeLists.txt
-:start-after: "[core]"
-:end-before: "[core]"
+:start-after: [core]
+:end-before: [core]
 :language: cmake
 ```
 

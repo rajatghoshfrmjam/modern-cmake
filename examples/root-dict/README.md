@@ -7,8 +7,8 @@ important flag in the list on most systems.
 ## examples/root-dict/CMakeLists.txt
 
 ```{literalinclude} CMakeLists.txt
-:start-after: "[main]"
-:end-before: "[main]"
+:start-after: [main]
+:end-before: [main]
 :language: cmake
 ```
 

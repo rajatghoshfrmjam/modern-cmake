@@ -1,4 +1,4 @@
-[project]
+[workspace]
 authors = ["Henry Schreiner <henryschreineriii@gmail.com>"]
 channels = ["conda-forge"]
 description = "A book about modern CMake"
@@ -20,14 +20,16 @@ cmd = "cmake -Sexamples -Bbuild && cmake --build build -v && cmake --build build
 
 
 [feature.build.dependencies]
-python = "3.10"
-jupyter-book = ">=1.0.2,<2"
+python = "3.14.*"
+bun = "*"
+typst = "*"
 imagemagick = "*"
 make = "*"
 
 [feature.build.tasks]
-build = "jupyter-book build ."
-pdf = "jupyter-book build . --builder pdflatex"
+build = "NODE_OPTIONS='--localstorage-file=_build/.node-localstorage --no-deprecation' bunx mystmd build --html"
+serve = "NODE_OPTIONS='--localstorage-file=_build/.node-localstorage --no-deprecation' bunx mystmd start"
+pdf = "NODE_OPTIONS='--localstorage-file=_build/.node-localstorage --no-deprecation' bunx mystmd build --pdf"
 
 
 [environments]

@@ -96,14 +96,13 @@ The default on 8 is not too bad, but you should not use the default on the end-o
 [![Ubuntu 18.04 package](https://repology.org/badge/version-for-repo/ubuntu_18_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/bionic/+source/cmake)
 [![Ubuntu 20.04 package](https://repology.org/badge/version-for-repo/ubuntu_20_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/focal/+source/cmake)
 [![Ubuntu 22.04 package](https://repology.org/badge/version-for-repo/ubuntu_22_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/jammy/+source/cmake)
-[![Ubuntu 24.14 package](https://repology.org/badge/version-for-repo/ubuntu_24_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/noble/+source/cmake)
+[![Ubuntu 24.04 package](https://repology.org/badge/version-for-repo/ubuntu_24_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/noble/+source/cmake)
 
 #### Debian
 
-[![Debian 10 package](https://repology.org/badge/version-for-repo/debian_10/cmake.svg)][repology]
-[![Debian 10 backports package](https://repology.org/badge/version-for-repo/debian_10_backports/cmake.svg)][repology]
 [![Debian 11 package](https://repology.org/badge/version-for-repo/debian_11/cmake.svg)][repology]
-[![Debian 11 backports package](https://repology.org/badge/version-for-repo/debian_11_backports/cmake.svg)][repology]
+[![Debian 12 package](https://repology.org/badge/version-for-repo/debian_12/cmake.svg)][repology]
+[![Debian 12 backports package](https://repology.org/badge/version-for-repo/debian_12_backports/cmake.svg)][repology]
 [![Debian Unstable package](https://repology.org/badge/version-for-repo/debian_unstable/cmake.svg)][repology]
 
 #### Other

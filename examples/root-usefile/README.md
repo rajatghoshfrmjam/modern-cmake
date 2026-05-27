@@ -5,8 +5,8 @@ This is a minimal example of a ROOT project using the UseFile system and without
 ## examples/root-usefile/CMakeLists.txt
 
 ```{literalinclude} CMakeLists.txt
-:start-after: "[main]"
-:end-before: "[main]"
+:start-after: [main]
+:end-before: [main]
 :language: cmake
 ```
 

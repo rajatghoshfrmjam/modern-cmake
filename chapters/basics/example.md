@@ -4,8 +4,8 @@ This is a simple yet complete example of a proper CMakeLists. For this program, 
 and one application, MyExample, with one source file.
 
 ```{literalinclude} ../../examples/simple-project/CMakeLists.txt
-:start-after: "[main]"
-:end-before: "[main]"
+:start-after: [main]
+:end-before: [main]
 :language: cmake
 ```
 

@@ -22,7 +22,7 @@ pages:
   script:
     - pixi run build
     - pixi run pdf
-    - cp _build/latex/modern-cmake.pdf _build/html/
+    - cp _build/pdf/modern-cmake.pdf _build/html/
   artifacts:
     paths:
       - _build/html
