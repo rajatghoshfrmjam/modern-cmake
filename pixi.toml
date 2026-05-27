@@ -21,17 +21,19 @@ cmd = "cmake -Sexamples -Bbuild && cmake --build build -v && cmake --build build
 
 [feature.build.dependencies]
 python = "3.14.*"
-bun = "*"
+mystmd = "*"
 typst = "*"
 imagemagick = "*"
 make = "*"
 
 [feature.build.tasks]
-build = "NODE_OPTIONS='--localstorage-file=_build/.node-localstorage --no-deprecation' bunx mystmd build --html"
-serve = "NODE_OPTIONS='--localstorage-file=_build/.node-localstorage --no-deprecation' bunx mystmd start"
-pdf = "NODE_OPTIONS='--localstorage-file=_build/.node-localstorage --no-deprecation' bunx mystmd build --pdf"
-
+build = "myst build --html"
+serve = "myst start"
+pdf = "myst build --pdf"
 
 [environments]
 test = ["test"]
 build = ["build"]
+
+[activation.env]
+NODE_OPTIONS = "--localstorage-file=_build/.node-localstorage"
