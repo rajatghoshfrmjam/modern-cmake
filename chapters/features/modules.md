@@ -11,19 +11,13 @@ include(CMakeDependentOption)
 cmake_dependent_option(BUILD_TESTS "Build your tests" ON "VAL1;VAL2" OFF)
 ```
 
-which is just a shortcut for this:
+When the condition (here, `VAL1 AND VAL2`) is true, this behaves like a normal `option(BUILD_TESTS "Build your tests" ON)`. When the condition is false, however, it does not just hide the option; it sets `BUILD_TESTS` to the fallback value (`OFF` here) as a normal (non-cache) variable, shadowing any value the user may have set in the cache. So `BUILD_TESTS` is only user-configurable while the condition holds; roughly:
 
 ```cmake
 if(VAL1 AND VAL2)
-    set(BUILD_TESTS_DEFAULT ON)
+    option(BUILD_TESTS "Build your tests" ON)
 else()
-    set(BUILD_TESTS_DEFAULT OFF)
-endif()
-
-option(BUILD_TESTS "Build your tests" ${BUILD_TESTS_DEFAULT})
-
-if(NOT BUILD_TESTS_DEFAULT)
-    mark_as_advanced(BUILD_TESTS)
+    set(BUILD_TESTS OFF)
 endif()
 ```
 

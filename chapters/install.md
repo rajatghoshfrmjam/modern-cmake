@@ -1,6 +1,6 @@
 # Exporting and Installing
 
-There are three good ways and one bad way to allow others use your library:
+There are three good ways and one bad way to allow others to use your library. The good ways are including your project as a subdirectory, exporting your build tree, and installing `*Config.cmake` scripts:
 
 ## Find module (the bad way)
 
@@ -20,6 +20,6 @@ add_library(MyLib::MyLib ALIAS MyLib)
 
 to standardise the usage across all methods. This ALIAS target will not be exported below.
 
-## Exporting
+## Exporting and Installing
 
-The third way is `*Config.cmake` scripts; that will be the topic of the next chapter in this session.
+The other two good ways, exporting your build tree and installing `*Config.cmake` scripts, share most of their machinery; they are the topic of the next chapters in this section.
