@@ -11,3 +11,6 @@
 *.egg-info
 _build
 build
+# Symlink to AGENTS.md
+CLAUDE.md
+.claude/
