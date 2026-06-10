@@ -4,7 +4,7 @@ In general, IDEs are already supported by a standard CMake project. There are ju
 
 ## Folders for targets
 
-Some IDEs, like Xcode, support folders. You have to manually enable the `USE_FOLDERS` global property to allow CMake to organize your files by folders:
+Some IDEs, like Xcode, support folders. Since CMake 3.26 (see policy [CMP0143](https://cmake.org/cmake/help/latest/policy/CMP0143.html)), the `USE_FOLDERS` global property defaults to `ON`; before that, you had to enable it manually to allow CMake to organize your files by folders:
 
 ```cmake
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -17,8 +17,6 @@ set_property(TARGET MyFile PROPERTY FOLDER "Scripts")
 ```
 
 Folders can be nested with `/`.
-
-You can control how files show up in each folder with regular expressions or explicit listings in [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html):
 
 ## Folders for files
 

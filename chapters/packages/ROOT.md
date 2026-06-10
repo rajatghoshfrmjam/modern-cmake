@@ -2,11 +2,11 @@
 
 ROOT is a C++ Toolkit for High Energy Physics. It is huge. There are really a lot of ways to use it in CMake, though many/most of the examples you'll find are probably wrong. Here's my recommendation.
 
-Most importantly, there are _lots of improvements_ in CMake support in more recent versions of ROOT - Using 6.16+ is much, much easier! If you really must support 6.14 or earlier, see the section at the end. There were further improvements in 6.20, as well, it behaves much more like a proper CMake project, and exports C++ standard features for targets, etc.
+Most importantly, any current version of ROOT (the 6.3x series at the time of writing) behaves like a proper CMake project: it provides imported targets, exports C++ standard features for those targets, and loads its CMake macros automatically. If you really must support an ancient ROOT (pre-6.20), see the appendix at the end.
 
 ## Finding ROOT
 
-ROOT 6.10+ supports config file discovery, so you can just do:
+ROOT supports config file discovery, so you can just do:
 
 ```{literalinclude} ../../examples/root-simple/CMakeLists.txt
 :start-after: [find_package]
@@ -18,9 +18,7 @@ to attempt to find ROOT. If you don't have your paths set up, you can pass `-DRO
 
 ## The right way (Targets)
 
-ROOT 6.12 and earlier do not add the include directory for imported targets. ROOT 6.14+ has corrected this error, and required target properties have been getting better. This method is rapidly becoming easier to use (see the example at the end of this page for the older ROOT details).
-
-To link, just pick the libraries you want to use:
+ROOT's imported targets carry the include directories, flags, and dependencies you need. To link, just pick the libraries you want to use:
 
 ```{literalinclude} ../../examples/root-simple/CMakeLists.txt
 :start-after: [add_and_link]
@@ -28,7 +26,7 @@ To link, just pick the libraries you want to use:
 :language: cmake
 ```
 
-If you'd like to see the default list, run `root-config --libs` on the command line. In Homebrew ROOT 6.18 this would be:
+If you'd like to see the default list, run `root-config --libs` on the command line. For a typical ROOT install this would be something like:
 
 - `ROOT::Core`
 - `ROOT::Gpad`
@@ -52,7 +50,7 @@ If you'd like to see the default list, run `root-config --libs` on the command l
 
 ## The old global way
 
-ROOT [provides a utility](https://root.cern/manual/integrate_root_into_my_cmake_project/) to set up a ROOT project, which you can activate using `include("${ROOT_USE_FILE}")`. This will automatically make ugly directory level and global variables for you. It will save you a little time setting up, and will waste massive amounts of time later if you try to do anything tricky. As long as you aren't making a library, it's probably fine for simple scripts. Includes and flags are set globally, but you'll still need to link to `${ROOT_LIBRARIES}` yourself, along with possibly `ROOT_EXE_LINKER_FLAGS` (You will have to `separate_arguments` first before linking or you will get an error if there are multiple flags, like on macOS). Also, before 6.16, you have to manually fix a bug in the spacing.
+ROOT [provides a utility](https://root.cern/manual/integrate_root_into_my_cmake_project/) to set up a ROOT project, which you can activate using `include("${ROOT_USE_FILE}")`. This will automatically make ugly directory level and global variables for you. It will save you a little time setting up, and will waste massive amounts of time later if you try to do anything tricky. As long as you aren't making a library, it's probably fine for simple scripts. Includes and flags are set globally, but you'll still need to link to `${ROOT_LIBRARIES}` yourself, along with possibly `ROOT_EXE_LINKER_FLAGS` (You will have to `separate_arguments` first before linking or you will get an error if there are multiple flags, like on macOS).
 
 Here's what it would look like:
 
@@ -73,20 +71,7 @@ Dictionary generation is ROOT's way of working around the missing reflection fea
 - Your class definition should end with `ClassDef(MyClassName, 1)`
 - Your class implementation should have `ClassImp(MyClassName)` in it
 
-ROOT provides `rootcling` and `genreflex` (a legacy interface to `rootcling`) binaries which produce the source files required to build the dictionary. It also defines `root_generate_dictionary`, a CMake function to invoke `rootcling` during the build process.
-
-To load this function, first include the ROOT macros:
-
-```cmake
-include("${ROOT_DIR}/modules/RootNewMacros.cmake")
-# For ROOT versions than 6.16, things break
-# if nothing is in the global include list!
-if (${ROOT_VERSION} VERSION_LESS "6.16")
-    include_directories(ROOT_NONEXISTENT_DIRECTORY_HACK)
-endif()
-```
-
-The `if(...)` condition is added to fix a bug in the NewMacros file that causes dictionary generation to fail if there is not at least one global include directory or a `inc` folder. Here I'm including a non-existent directory just to make it work. There is no `ROOT_NONEXISTENT_DIRECTORY_HACK` directory.
+ROOT provides `rootcling` and `genreflex` (a legacy interface to `rootcling`) binaries which produce the source files required to build the dictionary. It also defines `root_generate_dictionary`, a CMake function to invoke `rootcling` during the build process. The macros file defining it is loaded automatically, so the function is available as soon as `find_package(ROOT)` runs. (Only ancient ROOT required manually including the macros file; it was renamed to `RootMacros.cmake` and auto-loaded in 6.20 — see the appendix.)
 
 `rootcling` uses a special header file with a [specific formula][linkdef-root] to determine which parts to generate dictionaries for. The name of this file may have any prefix, but **must** end with `LinkDef.h`. Once you have written this header file, the dictionary generation function can be invoked.
 
@@ -103,7 +88,8 @@ This command will create three files:
 - `${NAME}.cxx`: This file should be included in your sources when you make your library.
 - `lib{NAME}.rootmap` (`G__` prefix removed): The rootmap file in plain text
 - `lib{NAME}_rdict.pcm` (`G__` prefix removed): A [ROOT pre-compiled module file][]
-  The name (`${NAME}`) of the target that you must create is determined by the dictionary name; if the dictionary name starts with `G__`, it will be removed. Otherwise, the name is used directly.
+
+The name (`${NAME}`) of the target that you must create is determined by the dictionary name; if the dictionary name starts with `G__`, it will be removed. Otherwise, the name is used directly.
 
 The final two output files must sit next to the library output. This is done by checking `CMAKE_LIBRARY_OUTPUT_DIRECTORY` (it will not pick up local target settings). If you have a libdir set but you don't have (global) install locations set, you'll also need to set `ARG_NOINSTALL` to `TRUE`.
 
@@ -123,9 +109,22 @@ The full name of the dictionary (e.g. `G__Example`) should not be identical to t
 
 ---
 
-# Using Old ROOT
+## Using Old ROOT
 
-If you really have to use older ROOT, you'll need something like this:
+If you really have to use an ancient ROOT (pre-6.20), you'll need to load the dictionary macros manually before using `root_generate_dictionary`:
+
+```cmake
+include("${ROOT_DIR}/modules/RootNewMacros.cmake")
+# For ROOT versions older than 6.16, things break
+# if nothing is in the global include list!
+if (${ROOT_VERSION} VERSION_LESS "6.16")
+    include_directories(ROOT_NONEXISTENT_DIRECTORY_HACK)
+endif()
+```
+
+(The `include_directories` line works around a bug in the NewMacros file that broke dictionary generation unless there was at least one global include directory or `inc` folder; the directory listed doesn't need to exist.)
+
+You'll also need to patch up the missing target properties and flags yourself, with something like this:
 
 ```cmake
 # ROOT targets are missing includes and flags in ROOT 6.10 and 6.12
