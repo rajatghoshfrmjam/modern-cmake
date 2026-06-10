@@ -87,7 +87,7 @@ macro(package_add_test_with_libraries TESTNAME FILES LIBRARIES TEST_WORKING_DIRE
     set_target_properties(${TESTNAME} PROPERTIES FOLDER tests)
 endmacro()
 
-package_add_test_with_libraries(test1 test1.cpp lib_to_test "${PROJECT_DIR}/european-test-data/")
+package_add_test_with_libraries(test1 test1.cpp lib_to_test "${PROJECT_SOURCE_DIR}/european-test-data/")
 ```
 
 ## Download method

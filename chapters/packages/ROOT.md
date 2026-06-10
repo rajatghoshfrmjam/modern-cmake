@@ -146,10 +146,10 @@ set_property(TARGET ROOT::Flags_CXX APPEND PROPERTY
 
 # Add definitions
 separate_arguments(ROOT_DEFINITIONS)
-foreach(_flag ${ROOT_EXE_LINKER_FLAGS})
+foreach(_flag ${ROOT_DEFINITIONS})
     # Remove -D or /D if present
     string(REGEX REPLACE [=[^[-//]D]=] "" _flag ${_flag})
-    set_property(TARGET ROOT::Flags APPEND PROPERTY INTERFACE_LINK_LIBRARIES ${_flag})
+    set_property(TARGET ROOT::Flags_CXX APPEND PROPERTY INTERFACE_COMPILE_DEFINITIONS ${_flag})
 endforeach()
 
 # This also fixes a bug in the linker flags
