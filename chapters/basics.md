@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.15)
 ```
 
 Let's mention a bit of CMake syntax. The command name
-{{ command.format('cmake_minimum_required') }} is case insensitive, so the common practice
+[`cmake_minimum_required`](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html) is case insensitive, so the common practice
 is to use lower case. [^1] The `VERSION` is a special keyword for this
 function. And the value of the version follows the keyword. Like everywhere in
 this book, just click on the command name to see the official documentation,
@@ -20,7 +20,7 @@ This line is special! [^2] The version of CMake will also dictate the policies,
 which define behavior changes. So, if you set `minimum_required` to `VERSION 2.8`, you'll get the wrong linking behavior on macOS, for example, even in the
 newest CMake versions. If you set it to 3.3 or less, you'll get the wrong
 hidden symbols behaviour, etc. A list of policies and versions is available at
-{{ cmake.format('policies') }}.
+[policies](https://cmake.org/cmake/help/latest/manual/cmake-policies.7.html).
 
 Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...4.1`;
 this means you support as low as 3.15 but have also tested it with the new
@@ -37,11 +37,10 @@ This is what new projects should do:
 cmake_minimum_required(VERSION 3.15...4.1)
 ```
 
-
 :::{tip}
 
 If you really need to set to a low value here, you can use
-{{ command.format('cmake_policy') }} to conditionally increase the policy level or set a
+[`cmake_policy`](https://cmake.org/cmake/help/latest/command/cmake_policy.html) to conditionally increase the policy level or set a
 specific policy.
 
 :::
@@ -63,7 +62,7 @@ arguments here are optional. The version sets a bunch of variables, like
 `Fortran`, `ASM`, `CUDA` (CMake 3.8+), `CSharp` (3.8+), and `SWIFT` (CMake
 3.15+ experimental). `C CXX` is the default. In CMake 3.9, `DESCRIPTION` was
 added to set a project description, as well. The documentation for
-{{ command.format('project') }} may be helpful.
+[`project`](https://cmake.org/cmake/help/latest/command/project.html) may be helpful.
 
 :::{tip}
 
@@ -85,11 +84,11 @@ with them, let's start with a simple executable.
 add_executable(one two.cpp three.h)
 ```
 
-There are several things to unpack here. `one` is both the name of the executable file generated, and the name of the CMake target created (you'll hear a lot more about targets soon, I promise). The source file list comes next, and you can list as many as you'd like. CMake is smart, and will only compile source file extensions. The headers will be, for most intents and purposes, ignored; the only reason to list them is to get them to show up in IDEs. Targets show up as folders in many IDEs. More about the general build system and targets is available at {{ cmake.format('buildsystem') }}.
+There are several things to unpack here. `one` is both the name of the executable file generated, and the name of the CMake target created (you'll hear a lot more about targets soon, I promise). The source file list comes next, and you can list as many as you'd like. CMake is smart, and will only compile source file extensions. The headers will be, for most intents and purposes, ignored; the only reason to list them is to get them to show up in IDEs. Targets show up as folders in many IDEs. More about the general build system and targets is available at [buildsystem](https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html).
 
 ## Making a library
 
-Making a library is done with {{ command.format('add_library') }}, and is just about as simple:
+Making a library is done with [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html), and is just about as simple:
 
 ```cmake
 add_library(one STATIC two.cpp three.h)
@@ -109,7 +108,7 @@ Now we've specified a target, how do we add information about it? For example, m
 target_include_directories(one PUBLIC include)
 ```
 
-{{ command.format('target_include_directories') }} adds an include directory to a target. `PUBLIC` doesn't mean much for an executable; for a library it lets CMake know that any targets that link to this target must also need that include directory. Other options are `PRIVATE` (only affect the current target, not dependencies), and `INTERFACE` (only needed for dependencies).
+[`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) adds an include directory to a target. `PUBLIC` doesn't mean much for an executable; for a library it lets CMake know that any targets that link to this target must also need that include directory. Other options are `PRIVATE` (only affect the current target, not dependencies), and `INTERFACE` (only needed for dependencies).
 
 We can then chain targets:
 
@@ -118,7 +117,7 @@ add_library(another STATIC another.cpp another.h)
 target_link_libraries(another PUBLIC one)
 ```
 
-{{ command.format('target_link_libraries') }} is probably the most useful and confusing command in CMake. It takes a target (`another`) and adds a dependency if a target is given. If no target of that name (`one`) exists, then it adds a link to a library called `one` on your path (hence the name of the command). Or you can give it a full path to a library. Or a linker flag. Just to add a final bit of confusion, classic CMake allowed you to skip the keyword selection of `PUBLIC`, etc. If this was done on a target, you'll get an error if you try to mix styles further down the chain.
+[`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) is probably the most useful and confusing command in CMake. It takes a target (`another`) and adds a dependency if a target is given. If no target of that name (`one`) exists, then it adds a link to a library called `one` on your path (hence the name of the command). Or you can give it a full path to a library. Or a linker flag. Just to add a final bit of confusion, classic CMake allowed you to skip the keyword selection of `PUBLIC`, etc. If this was done on a target, you'll get an error if you try to mix styles further down the chain.
 
 Focus on using targets everywhere, and keywords everywhere, and you'll be fine.
 
@@ -143,5 +142,7 @@ target_link_libraries(calc PRIVATE calclib)
 ```
 
 [^1]: In this book, I'll mostly avoid showing you the wrong way to do things; you can find plenty of examples of that online. I'll mention alternatives occasionally, but these are not recommended unless they are absolutely necessary; often they are just there to help you read older CMake code.
+
 [^2]: You will sometimes see `FATAL_ERROR` here, that was needed to support nice failures when running this in CMake <2.6, which should not be a problem anymore.
+
 [^3]: The `::` syntax was originally intended for `INTERFACE IMPORTED` libraries, which were explicitly supposed to be libraries defined outside the current project. But, because of this, most of the `target_*` commands don't work on `IMPORTED` libraries, making them hard to set up yourself. So don't use the `IMPORTED` keyword for now, and use an `ALIAS` target instead; it will be fine until you start exporting targets. This limitation was fixed in CMake 3.11.
