@@ -52,7 +52,7 @@ If you'd like to see the default list, run `root-config --libs` on the command l
 
 ## The old global way
 
-ROOT [provides a utility](https://root.cern.ch/how/integrate-root-my-project-cmake) to set up a ROOT project, which you can activate using `include("${ROOT_USE_FILE}")`. This will automatically make ugly directory level and global variables for you. It will save you a little time setting up, and will waste massive amounts of time later if you try to do anything tricky. As long as you aren't making a library, it's probably fine for simple scripts. Includes and flags are set globally, but you'll still need to link to `${ROOT_LIBRARIES}` yourself, along with possibly `ROOT_EXE_LINKER_FLAGS` (You will have to `separate_arguments` first before linking or you will get an error if there are multiple flags, like on macOS). Also, before 6.16, you have to manually fix a bug in the spacing.
+ROOT [provides a utility](https://root.cern/manual/integrate_root_into_my_cmake_project/) to set up a ROOT project, which you can activate using `include("${ROOT_USE_FILE}")`. This will automatically make ugly directory level and global variables for you. It will save you a little time setting up, and will waste massive amounts of time later if you try to do anything tricky. As long as you aren't making a library, it's probably fine for simple scripts. Includes and flags are set globally, but you'll still need to link to `${ROOT_LIBRARIES}` yourself, along with possibly `ROOT_EXE_LINKER_FLAGS` (You will have to `separate_arguments` first before linking or you will get an error if there are multiple flags, like on macOS). Also, before 6.16, you have to manually fix a bug in the spacing.
 
 Here's what it would look like:
 
@@ -118,7 +118,7 @@ root_generate_dictionary(G__Example Example.h MODULE Example LINKDEF ExampleLink
 
 The full name of the dictionary (e.g. `G__Example`) should not be identical to the `MODULE` argument.
 
-[linkdef-root]: https://root.cern.ch/selecting-dictionary-entries-linkdefh
+[linkdef-root]: https://root.cern/manual/io_custom_classes/#selecting-dictionary-entries-linkdefh
 [root pre-compiled module file]: https://inspirehep.net/literature/1413967
 
 ---
