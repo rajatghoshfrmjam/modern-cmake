@@ -42,7 +42,7 @@ set(MY_CACHE_VARIABLE "VALUE" CACHE STRING "" FORCE)
 mark_as_advanced(MY_CACHE_VARIABLE)
 ```
 
-The first line will cause the value to be set no matter what, and the second line will keep the variable from showing up in the list of variables if you run `cmake -L ..` or use a GUI. This is so common, you can also use the `INTERNAL` type to do the same thing (though technically it forces the STRING type, this won't affect any CMake code that depends on the variable):
+The first line will cause the value to be set no matter what, and the second line will keep the variable from showing up in the list of variables if you run `cmake -L ..` or use a GUI. This is so common, you can also use the `INTERNAL` type to do the same thing (the `INTERNAL` type implies `FORCE` and hides the entry from listings and GUIs):
 
 ```cmake
 set(MY_CACHE_VARIABLE "VALUE" CACHE INTERNAL "")
