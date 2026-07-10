@@ -21,6 +21,7 @@ You can replace the make line with `cmake --build .` if you'd like, and it will 
 ~/package $ cmake -S. -Bbuild
 ~/package $ cmake --build build
 ```
+
 (`-S` is the source location containing `CMakeLists.txt`, and `-B` is the build directory, which will be created.)
 Any _one_ of these commands will install:
 

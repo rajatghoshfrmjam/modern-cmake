@@ -91,4 +91,5 @@ See [cmake-properties] for a listing of all known properties. You can also make 
 [cmake-variables]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
 
 [^1]: `if` statements are a bit odd in that they can take the variable with or without the surrounding syntax; this is there for historical reasons: `if` predates the `${}` syntax.
+
 [^2]: Interface targets, for example, may have limits on custom properties that are allowed.

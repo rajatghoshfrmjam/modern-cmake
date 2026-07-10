@@ -7,7 +7,7 @@ Certainly there are no shortage of problems when building.
 But I think that we have a very good solution to quite a few of those problems.
 It's CMake. Not CMake 2.8 though; that was released before C++11 even existed!
 Nor the horrible examples out there for CMake (even those posted on KitWare's own tutorials list).
-I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 4.1+!
+I'm talking about Modern CMake. CMake 3.15+, maybe even CMake 4.4+!
 It's clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
 
 :::{attention}
@@ -16,7 +16,6 @@ This book is meant to be a living document. You can raise an issue or put in a m
 You can also [download a copy as a PDF](https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf). Be sure to check the [HSF CMake Training][], as well!
 
 :::
-
 
 In short, here are the most likely questions in your mind if you are considering Modern CMake:
 
@@ -54,15 +53,15 @@ Short answer: No.
 
 If you set your minimum version of CMake too low, CMake will produce a warning
 or even an error. The oldest you can set it to is 3.5, with anything under 3.10
-producing a warning, as of CMake 4.1 While a user can workaround this in
+producing a warning, as of CMake 4.4 While a user can workaround this in
 emergencies by setting `CMAKE_POLICY_VERSION_MINIMUM` to a valid version, you
 don't want users to have to do that.
 
 You really should _at least_ use a version of CMake that came out after your
-compiler, since it needs to know compiler flags, etc, for that version.  And,
+compiler, since it needs to know compiler flags, etc, for that version. And,
 since CMake will dumb itself down to the minimum required version in your CMake
-file, installing a new CMake, even system wide, is pretty safe.  You should _at
-least_ install it locally.  It's easy (1-2 lines in many cases), and you'll
+file, installing a new CMake, even system wide, is pretty safe. You should _at
+least_ install it locally. It's easy (1-2 lines in many cases), and you'll
 find that 5 minutes of work will save you hundreds of lines and hours of
 `CMakeLists.txt` writing, and will be much easier to maintain in the long run.
 
@@ -75,7 +74,7 @@ Quick summary of good minimums (more detail in book):
 - 3.5: If you _really_ need it.
 - As long as you set a maximum version, you can even set minimums below this. But don't.
 
-Always set the maximum version to the highest version you test (like 4.1).
+Always set the maximum version to the highest version you test (like 4.4).
 This will continue to work until CMake drops the _maximum_ version from its
 support window, rather than the minimum!
 
