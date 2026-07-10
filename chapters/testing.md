@@ -39,7 +39,7 @@ add_test(NAME TestName COMMAND TargetName)
 If you put something else besides a target name after COMMAND, it will register as a command line to run. It would also be valid to put the generator expression:
 
 ```cmake
-add_test(NAME TestName COMMAND $<TARGET_FILE:${TESTNAME}>)
+add_test(NAME TestName COMMAND $<TARGET_FILE:TargetName>)
 ```
 
 which would use the output location (thus, the executable) of the produced target.
@@ -54,7 +54,7 @@ add_test(
     ExampleCMakeBuild
   COMMAND
     "${CMAKE_CTEST_COMMAND}"
-             --build-and-test "${My_SOURCE_DIR}/examples/simple"
+             --build-and-test "${MyProject_SOURCE_DIR}/examples/simple"
                               "${CMAKE_CURRENT_BINARY_DIR}/simple"
              --build-generator "${CMAKE_GENERATOR}"
              --test-command "${CMAKE_CTEST_COMMAND}"
