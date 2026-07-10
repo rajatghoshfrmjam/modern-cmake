@@ -67,4 +67,4 @@ Look at the subchapters for recipes for popular frameworks.
 
 - [GoogleTest](testing/googletest.md): A popular option from Google. Development can be a bit slow.
 - [Catch2](testing/catch.md): A modern, PyTest-like framework with clever macros.
-- [DocTest](https://github.com/onqtam/doctest): A replacement for Catch2 that is supposed to compile much faster and be cleaner. See Catch2 chapter and replace with DocTest.
+- [DocTest](https://github.com/doctest/doctest): A replacement for Catch2 that is supposed to compile much faster and be cleaner. See Catch2 chapter and replace with DocTest.

@@ -29,7 +29,7 @@ configure_file (
 
 You should include the binary include directory as well when building your project. If you want to put any true/false variables in a header, CMake has C specific `#cmakedefine` and `#cmakedefine01` replacements to make appropriate define lines.
 
-You can also (and often do) use this to produce `.cmake` files, such as the configure files (see [installing](https://cliutils.gitlab.io/modern-cmake/chapters/install/installing.html)).
+You can also (and often do) use this to produce `.cmake` files, such as the configure files (see [installing](../install/installing.md)).
 
 ## Reading files
 
