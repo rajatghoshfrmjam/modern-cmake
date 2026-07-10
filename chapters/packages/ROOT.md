@@ -109,7 +109,7 @@ The final two output files must sit next to the library output. This is done by 
 
 ### Building the dictionary with an existing target
 
-Instead of manually adding the generated to your library sources, you can ask ROOT to do this for you by passing a `MODULE` argument. This argument should specify the name of an existing build target:
+Instead of manually adding the generated dictionary to your library sources, you can ask ROOT to do this for you by passing a `MODULE` argument. This argument should specify the name of an existing build target:
 
 ```cmake
 add_library(Example)
