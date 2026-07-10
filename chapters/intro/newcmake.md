@@ -403,7 +403,7 @@ fixes were implemented, especially to newer features, such as to FindPython, Fin
 - Initially released [November 26, 2019](https://blog.kitware.com/cmake-3-16-0-available-for-download/)
 - Added support for Objective C and Objective C++ languages
 - Support for precompiling headers, with `target_precompile_headers`
-- Support for "Unity" or "Jumbo" builds (merging source files) with {{ variable.format('CMAKE_UNITY_BUILD') }}
+- Support for "Unity" or "Jumbo" builds (merging source files) with [`CMAKE_UNITY_BUILD`](https://cmake.org/cmake/help/latest/variable/CMAKE_UNITY_BUILD.html)
 - CTest: Can now skip based on regex, expand lists
 - Several new features to control RPath.
 - Generator expressions work in more places, like build and install paths
@@ -415,13 +415,13 @@ This release has many smaller polishing changes, including several improvements 
 module. `export(PACKAGE)` has drastically changed; it now no longer touches `$HOME/.cmake` by default (if CMake Minimum version is 3.15 or higher), and requires an extra step if a user wants to use it. This is generally less surprising.
 
 - Initially released [July 17, 2019](https://blog.kitware.com/cmake-3-15-0-available-for-download/)
-- {{ envvar.format('CMAKE_GENERATOR') }} environment variable added to control default generator
+- [`CMAKE_GENERATOR`](https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR.html) environment variable added to control default generator
 - Multiple target support in build mode, `cmake . --build --target a b`
 - Shortcut `-t` for `--target`
 - Install support, `cmake . --install`, does not invoke the build system
 - Support for `--loglevel` and `NOTICE`, `VERBOSE`, `DEBUG`, and `TRACE` for `message`
-- The {{ command.format('list') }} command gained `PREPEND`, `POP_FRONT`, and `POP_BACK`
-- {{ command.format('execute_process') }} gained `COMMAND_ECHO` option ({{ variable.format('CMAKE_EXECUTE_PROCESS_COMMAND_ECHO') }}) allows you to automatically echo commands before running them
+- The [`list`](https://cmake.org/cmake/help/latest/command/list.html) command gained `PREPEND`, `POP_FRONT`, and `POP_BACK`
+- [`execute_process`](https://cmake.org/cmake/help/latest/command/execute_process.html) gained `COMMAND_ECHO` option ([`CMAKE_EXECUTE_PROCESS_COMMAND_ECHO`](https://cmake.org/cmake/help/latest/variable/CMAKE_EXECUTE_PROCESS_COMMAND_ECHO.html)) allows you to automatically echo commands before running them
 - Several Ninja improvements, include SWIFT language support
 - Compiler and list improvements to generator expressions
 
@@ -433,8 +433,8 @@ Quite a few more find packages produce targets. The new Visual Studio 16 2019 ge
 - Initially released [March 14, 2019](https://blog.kitware.com/cmake-3-14-0-available-for-download/)
 - The cmake `--build` command gained `-v/--verbose`, to use verbose builds if your build tool supports it
 - The FILE command gained `CREATE_LINK`, `READ_SYMLINK`, and `SIZE`
-- {{ command.format('get_filename_component') }} gained `LAST_EXT` and `NAME_WLE` to access just the _last_ extension on a file, which would get `.zip` on a file such as `version.1.2.zip` (very handy!)
-- You can see if a variable is defined in the CACHE with `DEFINED CACHE{VAR}` in an {{ command.format('if') }} statement.
+- [`get_filename_component`](https://cmake.org/cmake/help/latest/command/get_filename_component.html) gained `LAST_EXT` and `NAME_WLE` to access just the _last_ extension on a file, which would get `.zip` on a file such as `version.1.2.zip` (very handy!)
+- You can see if a variable is defined in the CACHE with `DEFINED CACHE{VAR}` in an [`if`](https://cmake.org/cmake/help/latest/command/if.html) statement.
 - `BUILD_RPATH_USE_ORIGIN` and CMake version were added to improve handling of RPath in the build directory.
 - The CMake server mode is now being replaced with a file API, starting in this release. Will affect IDEs in the long run.
 
