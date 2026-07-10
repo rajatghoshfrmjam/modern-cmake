@@ -119,4 +119,5 @@ COMPLEX_PREFIX_MULTI_VALUES = "some;other;values"
 If you look at the official page, you'll see a slightly different method using set to avoid explicitly writing the semicolons in the list; feel free to use the structure you like best. You can mix it with the positional arguments listed above; any remaining arguments (therefore optional positional arguments) are in `COMPLEX_PREFIX_UNPARSED_ARGUMENTS`.
 
 [^1]: They act as if they are evaluated at build/install time, though actually they are evaluated for each build configuration.
+
 [^2]: The CMake docs splits expressions into Informational, Logical, and Output.

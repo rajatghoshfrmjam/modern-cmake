@@ -22,9 +22,9 @@ newest CMake versions. If you set it to 3.3 or less, you'll get the wrong
 hidden symbols behaviour, etc. A list of policies and versions is available at
 {{ cmake.format('policies') }}.
 
-Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...4.1`;
+Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...4.4`;
 this means you support as low as 3.15 but have also tested it with the new
-policy settings up to 4.1. This is much nicer on users that need the better
+policy settings up to 4.4. This is much nicer on users that need the better
 settings, and due to a trick in the syntax, it's backward compatible with older
 versions of CMake (though actually running CMake 3.1-3.11 will only set the old
 version of the policies, since those versions didn't treat this specially). New
@@ -34,9 +34,8 @@ also usually have a very recent version of CMake.
 This is what new projects should do:
 
 ```cmake
-cmake_minimum_required(VERSION 3.15...4.1)
+cmake_minimum_required(VERSION 3.15...4.4)
 ```
-
 
 :::{tip}
 
@@ -129,7 +128,7 @@ Targets can have include directories, linked libraries (or linked targets), comp
 See if you can follow the following file. It makes a simple C++11 library and a program using it. No dependencies. I'll discuss more C++ standard options later, using the CMake 3.8 system for now.
 
 ```cmake
-cmake_minimum_required(VERSION 3.15...4.1)
+cmake_minimum_required(VERSION 3.15...4.4)
 
 project(Calculator LANGUAGES CXX)
 
@@ -143,5 +142,7 @@ target_link_libraries(calc PRIVATE calclib)
 ```
 
 [^1]: In this book, I'll mostly avoid showing you the wrong way to do things; you can find plenty of examples of that online. I'll mention alternatives occasionally, but these are not recommended unless they are absolutely necessary; often they are just there to help you read older CMake code.
+
 [^2]: You will sometimes see `FATAL_ERROR` here, that was needed to support nice failures when running this in CMake <2.6, which should not be a problem anymore.
+
 [^3]: The `::` syntax was originally intended for `INTERFACE IMPORTED` libraries, which were explicitly supposed to be libraries defined outside the current project. But, because of this, most of the `target_*` commands don't work on `IMPORTED` libraries, making them hard to set up yourself. So don't use the `IMPORTED` keyword for now, and use an `ALIAS` target instead; it will be fine until you start exporting targets. This limitation was fixed in CMake 3.11.

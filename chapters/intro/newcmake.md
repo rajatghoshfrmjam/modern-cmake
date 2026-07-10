@@ -6,13 +6,50 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 Nothing to report yet.
 
+## [CMake 4.4][]: Diagnostics
+
+This version introduces a structured diagnostics system, adds a `SOURCES` file
+set type, and brings a batch of scripting conveniences, and Free-threaded ABI
+for Python.
+
+- Initially released July 9, 2026
+- New `cmake_diagnostic()` command gives per-category, structured control over
+  warnings (the `CMAKE_WARN_DEPRECATED`/`CMAKE_ERROR_DEPRECATED` variables and
+  the `-W[no-][error=]dev` flags are now deprecated in favor of `author`)
+- New `SOURCES` file set type for organizing a target's sources
+- `cmake_parse_arguments()` gained a `PARSE_ARGN` signature
+- `list(FILTER)`, `list(SORT)`, and `list(TRANSFORM)` accept callback predicates/comparators
+- `execute_process()` gained `ENVIRONMENT` and `ENVIRONMENT_MODIFICATION`
+- `cmake --install` supports multiple components
+- `--presets-file` added to `cmake`, `ctest`, and `cpack` (also presets schema v12)
+- CUDA 23 support (NVCC 13.3+); `clang-cl` gained C++20 named modules
+- FindPython supports the Stable ABI for free-threaded Python
+
+## [CMake 4.3][]: Packaging
+
+This version lands initial Common Package Specification (CPS) support and a new
+build instrumentation framework, along with more imported targets and generator
+expressions.
+
+- Initially released [March 17, 2026](https://www.kitware.com/cmake-4-3-0-available-for-download/)
+- Common Package Specification (CPS) support in `find_package()` and `install()`
+- New instrumentation framework (`cmake_instrumentation()`) for build timing and diagnostics
+- New generator expressions: `$<FILE_SET_EXISTS>`, `$<SOURCE_EXISTS>`, string comparisons, `$<STRING:...>`
+- `get_property()`/`set_property()` gained a `FILE_SET` scope
+- Per-language link flags via `CMAKE_<LANG>_LINK_FLAGS` (CMP0210)
+- Interface header set verification now works on executables (CMP0209)
+- More imported targets: FindRuby, FindSQLite3, and `CUDA::bin2c` in FindCUDAToolkit
+- `file(ARCHIVE_CREATE)` gained a `THREADS` option and more compression formats
+- `source_group()` now supports generator expressions
+- `CMAKE_ENABLE_EXPORTS` deprecated (use `CMAKE_EXECUTABLE_ENABLE_EXPORTS`/`CMAKE_SHARED_LIBRARY_ENABLE_EXPORTS`)
+
 ## [CMake 4.2][]: Emscripten
 
 This version adds native Emscripten cross-compile support. There are lots of
 other smallish improvements too, like matching-case version variables from
 `find_package`, controls for object files, direct cache manipulation, and more.
 
-- Initially released Nov 19, 2025
+- Initially released [Nov 19, 2025](https://www.kitware.com/cmake-4-2-0-available-for-download/)
 - File API updates (version 2.9), with more info on imported/interface targets
 - Visual Studio 18 2026 added (14 2015 deprecated)
 - Cross-compile support for Emscripten (WebAssembly)
@@ -24,11 +61,10 @@ other smallish improvements too, like matching-case version variables from
 - NumPy no longer depends on Development.Module (CMP201)
 - ExternalProject can set environment variables
 
-
 ## [CMake 4.1][]: Bits of polish
 
 This version improves the pkg-config integration, OPTIONAL for find commands,
-and other small changes.  This release seemed to be focused on polishing up
+and other small changes. This release seemed to be focused on polishing up
 some edge cases.
 
 - Initially released [August 5, 2025](https://www.kitware.com/cmake-4-1-0-available-for-download/)
@@ -39,8 +75,6 @@ some edge cases.
 - NVIDIA support added to FindBLAS and FindLAPACK
 - FindPython modules now enforce consistency when cross-compiling (CMP0190)
 - Some GNUInstallDirs changes gated by CMP0192 and CMP0193
-
-
 
 ## [CMake 4.0][]: Out with the old
 
@@ -628,5 +662,7 @@ There were a ton of additions to this version of CMake, primarily to fill out th
 [cmake 4.0]: https://cmake.org/cmake/help/latest/release/4.0.html
 [cmake 4.1]: https://cmake.org/cmake/help/latest/release/4.1.html
 [cmake 4.2]: https://cmake.org/cmake/help/latest/release/4.2.html
+[cmake 4.3]: https://cmake.org/cmake/help/latest/release/4.3.html
+[cmake 4.4]: https://cmake.org/cmake/help/latest/release/4.4.html
 [cmake master]: https://cmake.org/cmake/help/git-master/release/index.html
 [fastercmake]: https://blog.kitware.com/improving-cmakes-runtime-performance/
