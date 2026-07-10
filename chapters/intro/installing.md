@@ -67,17 +67,25 @@ Here are some common build environments and the CMake version you'll find on the
 
 [The winget package][winget] is a good way to get CMake. Other options:
 
++++ {"no-pdf": true}
+
 [![Chocolatey package](https://repology.org/badge/version-for-repo/chocolatey/cmake.svg)][chocolatey]
 [![MSYS2 mingw package](https://repology.org/badge/version-for-repo/msys2_mingw/cmake.svg)][msys2]
 [![MSYS2 msys2 package](https://repology.org/badge/version-for-repo/msys2_msys2/cmake.svg)][msys2]
+
++++
 
 Also [Scoop][scoop] is generally up to date. The normal installers from CMake.org are common on Windows, too.
 
 ### MacOS
 
++++ {"no-pdf": true}
+
 [![Homebrew package](https://repology.org/badge/version-for-repo/homebrew/cmake.svg)][homebrew]
 [![Homebrew Casks package](https://repology.org/badge/version-for-repo/homebrew_casks/cmake.svg)][homebrew-cask]
 [![MacPorts package](https://repology.org/badge/version-for-repo/macports/cmake.svg)][macports]
+
++++
 
 Homebrew is quite a bit more popular nowadays on macOS, at least according to Google Trends.
 
@@ -85,26 +93,40 @@ Homebrew is quite a bit more popular nowadays on macOS, at least according to Go
 
 #### RHEL/Rocky/Alma/CentOS Stream
 
++++ {"no-pdf": true}
+
 [![Rocky Linux 9 package](https://repology.org/badge/version-for-repo/rocky_9/cmake.svg?minversion=3.15.0)][centos]
 [![AlmaLinux 9 package](https://repology.org/badge/version-for-repo/almalinux_9/cmake.svg?minversion=3.15.0)][centos]
 [![CentOS Stream 9 package](https://repology.org/badge/version-for-repo/centos_stream_9/cmake.svg?minversion=3.15.0)][centos]
 [![CentOS Stream 10 package](https://repology.org/badge/version-for-repo/centos_stream_10/cmake.svg?minversion=3.15.0)][centos]
 
++++
+
 RHEL 9 and 10 (and the Rocky Linux / AlmaLinux rebuilds and CentOS Stream) ship a maintained CMake in AppStream and update it over the release's lifetime, so the system package is usable; you no longer need EPEL just to get a reasonable CMake (EPEL doesn't even carry one anymore).
 
 #### Ubuntu
 
++++ {"no-pdf": true}
+
 [![Ubuntu 22.04 package](https://repology.org/badge/version-for-repo/ubuntu_22_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/jammy/+source/cmake)
 [![Ubuntu 24.04 package](https://repology.org/badge/version-for-repo/ubuntu_24_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/noble/+source/cmake)
 
++++
+
 #### Debian
+
++++ {"no-pdf": true}
 
 [![Debian 12 package](https://repology.org/badge/version-for-repo/debian_12/cmake.svg)][repology]
 [![Debian 12 backports package](https://repology.org/badge/version-for-repo/debian_12_backports/cmake.svg)][repology]
 [![Debian 13 package](https://repology.org/badge/version-for-repo/debian_13/cmake.svg)][repology]
 [![Debian Unstable package](https://repology.org/badge/version-for-repo/debian_unstable/cmake.svg)][repology]
 
++++
+
 #### Other
+
++++ {"no-pdf": true}
 
 [![Alpine Linux 3.23 package](https://repology.org/badge/version-for-repo/alpine_3_23/cmake.svg)](https://pkgs.alpinelinux.org/packages?name=cmake&branch=v3.23)
 [![Arch package](https://repology.org/badge/version-for-repo/arch/cmake.svg)][repology]
@@ -115,12 +137,18 @@ RHEL 9 and 10 (and the Rocky Linux / AlmaLinux rebuilds and CentOS Stream) ship 
 [![openSUSE Tumbleweed package](https://repology.org/badge/version-for-repo/opensuse_tumbleweed/cmake.svg)][repology]
 [![Homebrew package](https://repology.org/badge/version-for-repo/homebrew/cmake.svg)][homebrew]
 
++++
+
 ### General tools
+
++++ {"no-pdf": true}
 
 [![ConanCenter package](https://repology.org/badge/version-for-repo/conancenter/cmake.svg)][repology]
 [![PyPI](https://img.shields.io/pypi/v/cmake)][pypi]
 [![Conda-forge](https://img.shields.io/conda/vn/conda-forge/cmake.svg)][conda-forge]
 [![Anaconda](https://anaconda.org/anaconda/cmake/badges/version.svg?style=flat)][anaconda]
+
++++
 
 Just `pip install cmake` on many systems. Add `--user` if you have to (modern pip does this for you if needed). Universal2 wheels are supplied for macOS, covering both Intel and Apple Silicon.
 
@@ -138,7 +166,11 @@ If you are using GitHub Actions, also see the [jwlawson/actions-setup-cmake](htt
 
 Versions less than 3.15 are marked by a deeper color of red.
 
++++ {"no-pdf": true}
+
 [![Full listing](https://repology.org/badge/vertical-allrepos/cmake.svg?columns=3&minversion=3.15.0)][repology]
+
++++
 
 Also see [pkgs.org/download/cmake](https://pkgs.org/download/cmake).
 
