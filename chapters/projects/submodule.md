@@ -45,7 +45,7 @@ Or, you can build an interface library target yourself if it is a header only pr
 
 ## Bonus: Git version number
 
-Move this to Git section:
+Since you've already found Git with `find_package(Git)` in the snippet above, you can also use `${GIT_EXECUTABLE}` to capture the current commit hash into a variable, for example to embed it in your build:
 
 ```cmake
 execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD

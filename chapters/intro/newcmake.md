@@ -58,7 +58,7 @@ other smallish improvements too, like matching-case version variables from
 - `string(REGEX QUOTE)` added (like `re.escape` in Python)
 - New properties include `OBJECT_NAME` and `INSTALL_OBJECT_*` to control generated object files
 - Matching case `<PackageName>_VERSION` variables added to all find modules
-- NumPy no longer depends on Development.Module (CMP201)
+- NumPy no longer depends on Development.Module (CMP0201)
 - ExternalProject can set environment variables
 
 ## [CMake 4.1][]: Bits of polish
@@ -215,7 +215,7 @@ of CMake introduced a few releases ago are now usable in `find_` commands with
 - LTO for CUDA with nvcc
 - Workflow presets added, package presets too.
 - `SYSTEM` added to `add_subdirectory`, `FetchContent`, and as a directory property.
-- `block()`/`endblock()` for policy/variable scopes, also `PROPOGATE` in `return()`
+- `block()`/`endblock()` for policy/variable scopes, also `PROPAGATE` in `return()`
 - `BSD` & `LINUX` variables added
 - `VALIDATOR` function for `find_*` commands.
 - Several improvements to `try_*` commands.

@@ -4,7 +4,7 @@ There are three good ways and one bad way to allow others use your library:
 
 ## Find module (the bad way)
 
-If you are the library author, don't make a `Find<mypackage>.cmake` script! These were designed for libraries whose authors did not support CMake. Use a `Config<mypackage>.cmake` instead as listed below.
+If you are the library author, don't make a `Find<mypackage>.cmake` script! These were designed for libraries whose authors did not support CMake. Use a `<mypackage>Config.cmake` instead as listed below.
 
 ## Add Subproject
 

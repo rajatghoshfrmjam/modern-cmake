@@ -33,7 +33,7 @@ Here is a simple example of using Clang-Tidy:
 
 ```bash
 ~/package # cmake -S . -B build-tidy -DCMAKE_CXX_CLANG_TIDY="$(which clang-tidy);-fix"
-~/package # cmake --build build -j 1
+~/package # cmake --build build-tidy -j 1
 ```
 
 The `-fix` part is optional, and will modify your source files to try to fix
