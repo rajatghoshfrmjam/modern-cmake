@@ -22,13 +22,13 @@ You can control how files show up in each folder with regular expressions or exp
 
 ## Folders for files
 
-You can also control how the folders inside targets appear. There are two ways, both using the {{ command.format('source_group') }} command. The traditional way is
+You can also control how the folders inside targets appear. There are two ways, both using the [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) command. The traditional way is
 
 ```cmake
 source_group("Source Files\\New Directory" REGULAR_EXPRESSION ".*\\.c[ucp]p?")
 ```
 
-You can explicitly list files with `FILES`, or use a `REGULAR_EXPRESSION`. This way you have complete control over the folder structure. However, if your on-disk layout is well designed, you might just want to mimic that. In CMake 3.8+, you can do so very easily with a new version of the {{ command.format('source_group') }} command:
+You can explicitly list files with `FILES`, or use a `REGULAR_EXPRESSION`. This way you have complete control over the folder structure. However, if your on-disk layout is well designed, you might just want to mimic that. In CMake 3.8+, you can do so very easily with a new version of the [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) command:
 
 ```cmake
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/base/dir" PREFIX "Header Files" FILES ${FILE_LIST})
