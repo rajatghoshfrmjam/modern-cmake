@@ -70,7 +70,7 @@ All cards have an architecture level, like "7.2". You have two choices; the firs
 
 In CMake 3.18, it became very easy to target architectures. If you have a version range that includes 3.18 or newer, you will be using `CMAKE_CUDA_ARCHITECTURES` variable and the `CUDA_ARCHITECTURES` property on targets. You can list values (without the `.`), like 50 for arch 5.0. This will generate for both the real ( SASS ) and virtual architecture ( PTX ). Passing values of '50-real' will only generate for SASS, while passing '50-virtual' will only generate for PTX. If set to OFF, it will not pass architectures.
 
-In CMake 3.24, the architectures values have been extended to support user friendly values of 'native', 'all', and 'all-major'.
+In CMake 3.23, the architectures values were extended to support the user friendly values 'all' and 'all-major'; CMake 3.24 added 'native'.
 
 ### Working with targets
 
@@ -123,15 +123,19 @@ Variables that enabling the `CUDA` language provides:
 - `CMAKE_CUDA_COMPILER`: NVCC with location
 - `CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES`: Place for built-in Thrust, etc
 
-> ### Note that FindCUDA is deprecated, but for versions of CMake < 3.18, the following functions required FindCUDA:
->
-> - CUDA version checks / picking a version
-> - Architecture detection (Note: 3.12 fixes this partially)
-> - Linking to CUDA libraries from non-.cu files
+:::{warning}
 
-## Classic FindCUDA [WARNING: DO NOT USE] (for reference only)
+The classic FindCUDA module was deprecated for years and was finally removed in CMake 3.27 (policy [CMP0146](https://cmake.org/cmake/help/latest/policy/CMP0146.html)); on any modern CMake, `find_package(CUDA)` is a hard error. Before CMake 3.18, the following did still require FindCUDA:
 
-If you want to support an older version of CMake, I recommend at least including the FindCUDA from CMake version 3.9 in your cmake folder (see the CLIUtils github organization for a [git repository](https://github.com/CLIUtils/cuda_support)). You'll want two features that were added: `CUDA_LINK_LIBRARIES_KEYWORD` and `cuda_select_nvcc_arch_flags`, along with the newer architectures and CUDA versions.
+- CUDA version checks / picking a version
+- Architecture detection (Note: 3.12 fixes this partially)
+- Linking to CUDA libraries from non-.cu files
+
+:::
+
+## Classic FindCUDA [WARNING: REMOVED in CMake 3.27] (for reference only)
+
+The recipe below only works on CMake older than 3.27, since the module no longer exists after that. If you are stuck supporting such an old CMake, I recommend at least including the FindCUDA from CMake version 3.9 in your cmake folder (see the CLIUtils github organization for a [git repository](https://github.com/CLIUtils/cuda_support)). You'll want two features that were added: `CUDA_LINK_LIBRARIES_KEYWORD` and `cuda_select_nvcc_arch_flags`, along with the newer architectures and CUDA versions.
 
 To use the old CUDA support, you use `find_package`:
 
