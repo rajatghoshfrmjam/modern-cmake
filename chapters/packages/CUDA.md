@@ -2,7 +2,7 @@
 
 CUDA support is available in two flavors. The new method, introduced in CMake 3.8 (3.9 for Windows), should be strongly preferred over the old, hacky method - I only mention the old method due to the high chances of an old package somewhere having it. Unlike the older languages, CUDA support has been rapidly evolving, and building CUDA is hard, so I would recommend you _require a very recent version_ of CMake! CMake 3.17 and 3.18 have a lot of improvements directly targeting CUDA.
 
-A good resource for CUDA and Modern CMake is [this talk](http://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf) by CMake developer Robert Maynard at GTC 2017.
+A good resource for CUDA and Modern CMake is [this talk](https://web.archive.org/web/20240222053415/https://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf) by CMake developer Robert Maynard at GTC 2017.
 
 ## Adding the CUDA Language
 
@@ -99,7 +99,7 @@ endfunction()
 ### Useful variables
 
 You can use
-[`FindCUDAToolkit`](https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html)
+[`FindCUDAToolkit`](https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html)
 to find a variety of useful targets and variables even without enabling the
 CUDA language.
 
