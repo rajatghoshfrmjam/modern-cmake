@@ -17,9 +17,11 @@ this book, just click on the command name to see the official documentation,
 and use the dropdown to switch documentation between CMake versions.
 
 This line is special! [^2] The version of CMake will also dictate the policies,
-which define behavior changes. So, if you set `minimum_required` to `VERSION 2.8`, you'll get the wrong linking behavior on macOS, for example, even in the
-newest CMake versions. If you set it to 3.3 or less, you'll get the wrong
-hidden symbols behaviour, etc. A list of policies and versions is available at
+which define behavior changes. CMake no longer keeps the very oldest behaviors
+around: starting in CMake 4.0, setting `cmake_minimum_required` (or the start
+of a range) below 3.5 is a hard error, and values below roughly 3.10 produce a
+deprecation warning. So pick a modern minimum, like the range recommended
+below. A list of policies and versions is available at
 [policies](https://cmake.org/cmake/help/latest/manual/cmake-policies.7.html).
 
 Starting in CMake 3.12, this supports a range, such as `VERSION 3.15...4.4`;
@@ -59,8 +61,9 @@ Now we see even more syntax. Strings are quoted, whitespace doesn't matter, and
 the name of the project is the first argument (positional). All the keyword
 arguments here are optional. The version sets a bunch of variables, like
 `MyProject_VERSION` and `PROJECT_VERSION`. The languages are `C`, `CXX`,
-`Fortran`, `ASM`, `CUDA` (CMake 3.8+), `CSharp` (3.8+), and `SWIFT` (CMake
-3.15+ experimental). `C CXX` is the default. In CMake 3.9, `DESCRIPTION` was
+`Fortran`, `ASM`, `CUDA` (CMake 3.8+), `CSharp` (3.8+), `Swift` (3.15+),
+`OBJC` and `OBJCXX` (3.16+), `ISPC` (3.18+), and `HIP` (3.21+). `C CXX` is the
+default. In CMake 3.9, `DESCRIPTION` was
 added to set a project description, as well. The documentation for
 [`project`](https://cmake.org/cmake/help/latest/command/project.html) may be helpful.
 
@@ -121,7 +124,7 @@ target_link_libraries(another PUBLIC one)
 
 Focus on using targets everywhere, and keywords everywhere, and you'll be fine.
 
-Targets can have include directories, linked libraries (or linked targets), compile options, compile definitions, compile features (see the C++11 chapter), and more. As you'll see in the two including projects chapters, you can often get targets (and always make targets) to represent all the libraries you use. Even things that are not true libraries, like OpenMP, can be represented with targets. This is why Modern CMake is great!
+Targets can have include directories, linked libraries (or linked targets), compile options, compile definitions, compile features (see the C++ standards chapter), and more. As you'll see in the two including projects chapters, you can often get targets (and always make targets) to represent all the libraries you use. Even things that are not true libraries, like OpenMP, can be represented with targets. This is why Modern CMake is great!
 
 ## Dive in
 
@@ -145,4 +148,4 @@ target_link_libraries(calc PRIVATE calclib)
 
 [^2]: You will sometimes see `FATAL_ERROR` here, that was needed to support nice failures when running this in CMake <2.6, which should not be a problem anymore.
 
-[^3]: The `::` syntax was originally intended for `INTERFACE IMPORTED` libraries, which were explicitly supposed to be libraries defined outside the current project. But, because of this, most of the `target_*` commands don't work on `IMPORTED` libraries, making them hard to set up yourself. So don't use the `IMPORTED` keyword for now, and use an `ALIAS` target instead; it will be fine until you start exporting targets. This limitation was fixed in CMake 3.11.
+[^3]: The `::` syntax was originally intended for `INTERFACE IMPORTED` libraries, which were explicitly supposed to be libraries defined outside the current project. Historically, most of the `target_*` commands didn't work on `IMPORTED` libraries, so an `ALIAS` target was the only way to get a `::` name for your own targets; that limitation was removed in CMake 3.11, but making a namespaced `ALIAS` for your own library is still good practice (it matches what users get from `find_package`).

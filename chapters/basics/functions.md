@@ -90,7 +90,7 @@ If you want positional arguments, they are listed explicitly, and all other argu
 
 ## Arguments
 
-CMake has a named variable system that you've already seen in most of the built-in CMake functions. You can use it with the [`cmake_parse_arguments`](https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html) function. If you want to support a version of CMake less than 3.5, you'll want to also include the [CMakeParseArguments](https://cmake.org/cmake/help/latest/module/CMakeParseArguments.html) module, which is where it used to live before becoming a built in command. Here is an example of how to use it:
+CMake has a named variable system that you've already seen in most of the built-in CMake functions. You can use it with the [`cmake_parse_arguments`](https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html) function. Here is an example of how to use it:
 
 ```cmake
 function(COMPLEX)

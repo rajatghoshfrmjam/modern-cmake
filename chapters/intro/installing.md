@@ -83,33 +83,32 @@ Homebrew is quite a bit more popular nowadays on macOS, at least according to Go
 
 ### Linux
 
-#### RHEL/CentOS
+#### RHEL/Rocky/Alma/CentOS Stream
 
-[![CentOS 7 package](https://repology.org/badge/version-for-repo/centos_7/cmake.svg?minversion=3.15.0)][centos]
-[![CentOS 8 package](https://repology.org/badge/version-for-repo/centos_8/cmake.svg?minversion=3.15.0)][centos]
-[![EPEL 7 package](https://repology.org/badge/version-for-repo/epel_7/cmake.svg?minversion=3.15.0)][centos]
+[![Rocky Linux 9 package](https://repology.org/badge/version-for-repo/rocky_9/cmake.svg?minversion=3.15.0)][centos]
+[![AlmaLinux 9 package](https://repology.org/badge/version-for-repo/almalinux_9/cmake.svg?minversion=3.15.0)][centos]
+[![CentOS Stream 9 package](https://repology.org/badge/version-for-repo/centos_stream_9/cmake.svg?minversion=3.15.0)][centos]
+[![CentOS Stream 10 package](https://repology.org/badge/version-for-repo/centos_stream_10/cmake.svg?minversion=3.15.0)][centos]
 
-The default on 8 is not too bad, but you should not use the default on the end-of-life CentOS 7. Use the EPEL package instead.
+RHEL 9 and 10 (and the Rocky Linux / AlmaLinux rebuilds and CentOS Stream) ship a maintained CMake in AppStream and update it over the release's lifetime, so the system package is usable; you no longer need EPEL just to get a reasonable CMake (EPEL doesn't even carry one anymore).
 
 #### Ubuntu
 
-[![Ubuntu 18.04 package](https://repology.org/badge/version-for-repo/ubuntu_18_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/bionic/+source/cmake)
-[![Ubuntu 20.04 package](https://repology.org/badge/version-for-repo/ubuntu_20_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/focal/+source/cmake)
 [![Ubuntu 22.04 package](https://repology.org/badge/version-for-repo/ubuntu_22_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/jammy/+source/cmake)
 [![Ubuntu 24.04 package](https://repology.org/badge/version-for-repo/ubuntu_24_04/cmake.svg?minversion=3.15.0)](https://launchpad.net/ubuntu/noble/+source/cmake)
 
 #### Debian
 
-[![Debian 11 package](https://repology.org/badge/version-for-repo/debian_11/cmake.svg)][repology]
 [![Debian 12 package](https://repology.org/badge/version-for-repo/debian_12/cmake.svg)][repology]
 [![Debian 12 backports package](https://repology.org/badge/version-for-repo/debian_12_backports/cmake.svg)][repology]
+[![Debian 13 package](https://repology.org/badge/version-for-repo/debian_13/cmake.svg)][repology]
 [![Debian Unstable package](https://repology.org/badge/version-for-repo/debian_unstable/cmake.svg)][repology]
 
 #### Other
 
-[![Alpine Linux 3.20 package](https://repology.org/badge/version-for-repo/alpine_3_20/cmake.svg)](https://pkgs.alpinelinux.org/packages?name=cmake&branch=v3.20)
+[![Alpine Linux 3.23 package](https://repology.org/badge/version-for-repo/alpine_3_23/cmake.svg)](https://pkgs.alpinelinux.org/packages?name=cmake&branch=v3.23)
 [![Arch package](https://repology.org/badge/version-for-repo/arch/cmake.svg)][repology]
-[![Fedora 40 package](https://repology.org/badge/version-for-repo/fedora_40/cmake.svg)][repology]
+[![Fedora 44 package](https://repology.org/badge/version-for-repo/fedora_44/cmake.svg)][repology]
 [![FreeBSD port](https://repology.org/badge/version-for-repo/freebsd/cmake.svg)][repology]
 [![OpenBSD port](https://repology.org/badge/version-for-repo/openbsd/cmake.svg)][repology]
 [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/cmake.svg)][repology]
@@ -123,14 +122,15 @@ The default on 8 is not too bad, but you should not use the default on the end-o
 [![Conda-forge](https://img.shields.io/conda/vn/conda-forge/cmake.svg)][conda-forge]
 [![Anaconda](https://anaconda.org/anaconda/cmake/badges/version.svg?style=flat)][anaconda]
 
-Just `pip install cmake` on many systems. Add `--user` if you have to (modern pip does this for you if needed). This does not supply Universal2 wheels yet.
+Just `pip install cmake` on many systems. Add `--user` if you have to (modern pip does this for you if needed). Universal2 wheels are supplied for macOS, covering both Intel and Apple Silicon.
 
 ### CI
 
-| Distribution                                                                                                                         | CMake version | Notes                        |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------- | ---------------------------- |
-| [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) | 4.4           | kept up to date              |
-| [GitHub Actions 20.04](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md)                  | 4.4           | Same runners as Azure DevOps |
+| Distribution                                                                                                                         | CMake version | Notes                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------- |
+| [Azure DevOps](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent) | 3.31          | kept up to date                               |
+| [GitHub Actions ubuntu-22.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)                 | 3.31          | Same runners as Azure DevOps                  |
+| [GitHub Actions ubuntu-24.04](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)                 | 3.31          | `ubuntu-latest`; same runners as Azure DevOps |
 
 If you are using GitHub Actions, also see the [jwlawson/actions-setup-cmake](https://github.com/marketplace/actions/actions-setup-cmake) action, which can install your selection of CMake, even in a docker action run.
 
@@ -150,7 +150,7 @@ Also see [pkgs.org/download/cmake](https://pkgs.org/download/cmake).
 pip install cmake
 ```
 
-And as long as a binary exists for your system, you'll be up-and-running almost immediately. If a binary doesn't exist, it will try to use KitWare's `scikit-build` package to build, and will require an older copy of CMake to build. So only use this system if binaries exist, which is most of the time.
+And as long as a binary exists for your system, you'll be up-and-running almost immediately. If a binary doesn't exist, it will try to build from source (the package is built with `scikit-build-core`), which requires an existing copy of CMake. So only use this system if binaries exist, which is most of the time.
 
 This has the benefit of respecting your current virtual environment, as well. It really shines when placed in a `pyproject.toml` file, however - it will only be installed to build your package, and will not remain afterwards! Fantastic.
 

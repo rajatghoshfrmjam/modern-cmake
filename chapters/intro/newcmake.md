@@ -4,7 +4,26 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
-Nothing to report yet.
+CMake 4.4 is in development. Nothing major to report yet.
+
+## [CMake 4.3][]: Package specifications
+
+This version adds support for the Common Package Specification (CPS), a
+language-agnostic package description format that packages can now produce and
+consume instead of hand-written CMake config files. It also adds an
+instrumentation framework for profiling your configure and build steps.
+
+- Initially released [March 17, 2026](https://www.kitware.com/cmake-4-3-0-available-for-download/)
+- [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) can now search for and import CPS packages
+- [`install`](https://cmake.org/cmake/help/latest/command/install.html) and [`export`](https://cmake.org/cmake/help/latest/command/export.html) gained a `PACKAGE_INFO` mode to generate CPS package descriptions
+- [`project`](https://cmake.org/cmake/help/latest/command/project.html) gained `COMPAT_VERSION` and `SPDX_LICENSE` options
+- New [cmake-instrumentation](https://cmake.org/cmake/help/latest/manual/cmake-instrumentation.7.html) facility collects timing and diagnostic data during configure/generate/build/test/install, viewable in CDash or as Google Trace Event files
+- `cmake --build` now accepts a build directory and `--preset` together
+- `cmake --version` can print JSON, and `cmake -E bin2c` was added
+- Archive handling (`cmake -E tar`, `file(ARCHIVE_CREATE)`, CPack) gained multithreading, compression levels, and more compression methods
+- `get_property`/`set_property` support a `FILE_SET` scope
+- New string comparison and `$<STRING:...>` generator expressions, plus file set and source file queries
+- FindRuby and FindSQLite3 now provide imported targets
 
 ## [CMake 4.4][]: Diagnostics
 
