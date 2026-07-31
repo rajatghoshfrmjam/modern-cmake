@@ -4,7 +4,31 @@ This is an abbreviated version of the CMake changelog with just the highlights f
 
 ## [CMake in development][cmake master]: WIP
 
-CMake 4.4 is in development. Nothing major to report yet.
+CMake 4.5 is in development. Nothing major to report yet.
+
+## [CMake 4.4][]: Diagnostics
+
+This version introduces a structured diagnostics system that replaces the old
+warning variables and flags, a `SOURCES` file set type, test discovery at test
+time, and a batch of scripting conveniences.
+
+- Initially released [July 14, 2026](https://www.kitware.com/cmake-4-4-0-available-for-download/)
+- New `cmake_diagnostic()` command gives per-category, structured control over
+  warnings (the `CMAKE_WARN_DEPRECATED`/`CMAKE_ERROR_DEPRECATED` variables and
+  the `-W[no-][error=]dev` flags are now deprecated in favor of `author`)
+- New `SOURCES` file set type for specifying a target's sources
+- New `discover_tests()` command registers tests discovered at test time; Ninja
+  gained `test_prep/<test-name>` targets, and ctest can forward extra arguments
+  to tests after `--`
+- `cmake_parse_arguments()` gained a `PARSE_ARGN` signature
+- `list(FILTER)`, `list(SORT)`, and `list(TRANSFORM)` accept callback predicates/comparators
+- `execute_process()` gained `ENVIRONMENT` and `ENVIRONMENT_MODIFICATION`
+- `cmake --install` supports multiple components and parallel jobs
+- `--presets-file` added to `cmake`, `ctest`, and `cpack` (also presets schema v12)
+- `write_basic_package_version_file()` gained `SamePatchVersion`, `SameFullVersion`, and `SemanticVersion` compatibility modes
+- CUDA 23 support (NVCC 13.3+); `clang-cl` gained C++20 named modules
+- FindPython supports the Stable ABI for free-threaded Python
+- `macro()` now preserves backslashes in arguments (CMP0219)
 
 ## [CMake 4.3][]: Package specifications
 
@@ -24,43 +48,6 @@ instrumentation framework for profiling your configure and build steps.
 - `get_property`/`set_property` support a `FILE_SET` scope
 - New string comparison and `$<STRING:...>` generator expressions, plus file set and source file queries
 - FindRuby and FindSQLite3 now provide imported targets
-
-## [CMake 4.4][]: Diagnostics
-
-This version introduces a structured diagnostics system, adds a `SOURCES` file
-set type, and brings a batch of scripting conveniences, and Free-threaded ABI
-for Python.
-
-- Initially released July 9, 2026
-- New `cmake_diagnostic()` command gives per-category, structured control over
-  warnings (the `CMAKE_WARN_DEPRECATED`/`CMAKE_ERROR_DEPRECATED` variables and
-  the `-W[no-][error=]dev` flags are now deprecated in favor of `author`)
-- New `SOURCES` file set type for organizing a target's sources
-- `cmake_parse_arguments()` gained a `PARSE_ARGN` signature
-- `list(FILTER)`, `list(SORT)`, and `list(TRANSFORM)` accept callback predicates/comparators
-- `execute_process()` gained `ENVIRONMENT` and `ENVIRONMENT_MODIFICATION`
-- `cmake --install` supports multiple components
-- `--presets-file` added to `cmake`, `ctest`, and `cpack` (also presets schema v12)
-- CUDA 23 support (NVCC 13.3+); `clang-cl` gained C++20 named modules
-- FindPython supports the Stable ABI for free-threaded Python
-
-## [CMake 4.3][]: Packaging
-
-This version lands initial Common Package Specification (CPS) support and a new
-build instrumentation framework, along with more imported targets and generator
-expressions.
-
-- Initially released [March 17, 2026](https://www.kitware.com/cmake-4-3-0-available-for-download/)
-- Common Package Specification (CPS) support in `find_package()` and `install()`
-- New instrumentation framework (`cmake_instrumentation()`) for build timing and diagnostics
-- New generator expressions: `$<FILE_SET_EXISTS>`, `$<SOURCE_EXISTS>`, string comparisons, `$<STRING:...>`
-- `get_property()`/`set_property()` gained a `FILE_SET` scope
-- Per-language link flags via `CMAKE_<LANG>_LINK_FLAGS` (CMP0210)
-- Interface header set verification now works on executables (CMP0209)
-- More imported targets: FindRuby, FindSQLite3, and `CUDA::bin2c` in FindCUDAToolkit
-- `file(ARCHIVE_CREATE)` gained a `THREADS` option and more compression formats
-- `source_group()` now supports generator expressions
-- `CMAKE_ENABLE_EXPORTS` deprecated (use `CMAKE_EXECUTABLE_ENABLE_EXPORTS`/`CMAKE_SHARED_LIBRARY_ENABLE_EXPORTS`)
 
 ## [CMake 4.2][]: Emscripten
 

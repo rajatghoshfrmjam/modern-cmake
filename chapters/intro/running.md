@@ -54,6 +54,7 @@ Selecting a compiler must be done on the first run in an empty directory. It's n
 ```
 
 That sets the environment variables in bash for CC and CXX, and CMake will respect those variables. If you are using Git Bash, you should use `export` to propagate the variables to subprocesses:
+
 ```bash
 ~/package/build $ export CC=clang CXX=clang++ cmake ..
 ```
